@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { AssociateComponent } from './associate/associate.component';
 import { SecurityComponent } from './security/security.component';
+import { ShowhcComponent } from './showhc/showhc.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SecurityComponent } from './security/security.component';
     HomeComponent,
     AdminComponent,
     AssociateComponent,
-    SecurityComponent
+    SecurityComponent,
+    ShowhcComponent
   ],
   imports: [
     BrowserModule,
