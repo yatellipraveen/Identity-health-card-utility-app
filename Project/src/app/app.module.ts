@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsComponent } from './forms/forms.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { AddhealthcardComponent } from './addhealthcard/addhealthcard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormsComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    AddhealthcardComponent
   ],
   imports: [
     BrowserModule,
