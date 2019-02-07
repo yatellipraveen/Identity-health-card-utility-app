@@ -9,15 +9,10 @@ import { SecurityComponent } from './security/security.component';
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path:'home', component:HomeComponent},
-  {path :'admin', component: AdminComponent,
-    children : [{path: 'home', component: HomeComponent},
-    { path : 'associate', component : AssociateComponent}
-  ]
-
-},
-  {path : 'associate', component: AssociateComponent},
-  {path : 'security', component: SecurityComponent},
-  {path : 'forms', component: FormsComponent}
+  {path :'admin', component: AdminComponent},
+  {path:'admin/forms',component: FormsComponent},
+  {path : 'admin/associates', component: AssociateComponent},
+  {path : 'admin/security', component: SecurityComponent},
 ];
 
 @NgModule({
