@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'associate/showhc', component: ShowhcComponent},
   {path : 'security', component: SecurityComponent},
   { path: 'admin/addhc', component: AddhealthcardComponent},
-  {path: 'associate/showid', component: ShowidComponent}
+  {path: 'associate/showid', component: ShowidComponent},
 ];
 
 @NgModule({
