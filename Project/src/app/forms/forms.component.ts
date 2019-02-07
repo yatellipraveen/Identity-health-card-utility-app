@@ -11,7 +11,7 @@ export class FormsComponent implements OnInit {
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
-    dob: new FormControl('', Validators.required),
+    bgroup: new FormControl('', Validators.required),
     eid: new FormControl('', Validators.required)
    });
    get f(){
