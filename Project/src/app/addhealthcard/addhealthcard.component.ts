@@ -19,9 +19,14 @@ export class AddhealthcardComponent implements OnInit {
       this.registerForm = this.formBuilder.group({
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
+          policyno : ['', Validators.required],
+          uhid:['', Validators.required],
+          gender:['', Validators.required],
           eno: ['', Validators.required],
+          age:['', Validators.required],
           cardno: ['', Validators.required],
-          dob: ['',Validators.required]
+          validfrom: ['',Validators.required],
+          validupto: ['',Validators.required]
       });
   }
 
