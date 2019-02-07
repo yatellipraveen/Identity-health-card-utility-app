@@ -6,12 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsComponent } from './forms/forms.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { AssociateComponent } from './associate/associate.component';
+import { SecurityComponent } from './security/security.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormsComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    HomeComponent,
+    AdminComponent,
+    AssociateComponent,
+    SecurityComponent
   ],
   imports: [
     BrowserModule,
