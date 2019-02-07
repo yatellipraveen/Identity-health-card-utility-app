@@ -7,7 +7,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AssociateComponent } from './associate/associate.component';
 import { SecurityComponent } from './security/security.component';
 import { ShowhcComponent } from './showhc/showhc.component';
-import {ShowidComponent} from './showid/showid.component'
+import {ShowidComponent} from './showid/showid.component';
+
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
