@@ -7,13 +7,22 @@ import { AppComponent } from './app.component';
 import { FormsComponent } from './forms/forms.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { AddhealthcardComponent } from './addhealthcard/addhealthcard.component';
-
+import { HomeComponent } from './home/home.component';
+import { AdminComponent } from './admin/admin.component';
+import { AssociateComponent } from './associate/associate.component';
+import { SecurityComponent } from './security/security.component';
+import { ShowhcComponent } from './showhc/showhc.component';
 @NgModule({
   declarations: [
     AppComponent,
     FormsComponent,
     UserdetailsComponent,
-    AddhealthcardComponent
+    AddhealthcardComponent,
+    HomeComponent,
+    AdminComponent,
+    AssociateComponent,
+    SecurityComponent,
+    ShowhcComponent
   ],
   imports: [
     BrowserModule,
