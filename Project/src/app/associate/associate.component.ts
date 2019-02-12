@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-associate',
   templateUrl: './associate.component.html',
@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociateComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private location: Location) { }
+  onClick(){
+    this.location.back();
+  }
   ngOnInit() {
   }
 
