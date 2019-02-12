@@ -7,7 +7,7 @@
                   <img style="height:90px; width:50%;" src="https://www.greatplacetowork.in/wp-content/uploads/2018/07/Great-Mid-Size-Workplaces-small.jpg" class="img-fluid" >
               </div> -->
               <h3 >Health card Details</h3>
-              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <form name="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                   <div class="form-group">
                       <label>First Name</label>
                       <input type="text" pattern="^[A-Za-z]+$" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
@@ -87,8 +87,10 @@
                         <div *ngIf="f.validupto.errors.pattern">Must be in required format</div>
                     </div>
                 </div>
-                  <div class="form-group">
-                      <button class="btn btn-primary">Register</button>
+                <div class="form-group">
+                    <button class="btn btn-primary" >Submit</button>
+                    <span style="padding-right:1em;"></span>
+                    <button (click)="onClick()" class="btn btn-primary" >Back</button>
                   </div>
               </form>
               <!-- {{registerForm.value| json}} -->

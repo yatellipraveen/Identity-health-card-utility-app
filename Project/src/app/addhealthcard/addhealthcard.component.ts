@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 
@@ -9,30 +10,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./addhealthcard.component.css']
 })
 export class AddhealthcardComponent implements OnInit {
-
-  registerForm: FormGroup;
   submitted = false;
+  registerForm = new FormGroup({
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    policyno :new FormControl ('', Validators.required),
+    uhid: new FormControl ('', Validators.required),
+    gender: new FormControl ('', Validators.required),
+    eno: new FormControl ('', Validators.required),
+    age: new FormControl ('', Validators.required),
+    cardno: new FormControl ('', Validators.required),
+    validfrom: new FormControl ('', Validators.required),
+    validupto: new FormControl ('', Validators.required),
+   });
+   get f(){
+    return this.registerForm.controls;
+  }
+  constructor(private router: Router, private location: Location) { }
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
-      this.registerForm = this.formBuilder.group({
-          firstName: ['', Validators.required],
-          lastName: ['', Validators.required],
-          policyno : ['', Validators.required],
-          uhid:['', Validators.required],
-          gender:['', Validators.required],
-          eno: ['', Validators.required],
-          age:['', Validators.required],
-          cardno: ['', Validators.required],
-          validfrom: ['',Validators.required],
-          validupto: ['',Validators.required]
-      });
+      // this.registerForm = this.formBuilder.group({
+      //     firstName: new FormControl ('', Validators.required),
+      //     lastName: new FormControl ('', Validators.required),
+      //     policyno : new FormControl ('', Validators.required),
+      //     uhid:new FormControl ('', Validators.required),
+      //     gender:new FormControl ('', Validators.required),
+      //     eno: new FormControl ('', Validators.required),
+      //     age:new FormControl ('', Validators.required),
+      //     cardno: new FormControl ('', Validators.required),
+      //     validfrom: ['',Validators.required],
+      //     validupto: ['',Validators.required]
+      // });
   }
-
+  onClick(){
+    this.location.back();
+  }
   // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
-
+  
   onSubmit() {
       this.submitted = true;
 
