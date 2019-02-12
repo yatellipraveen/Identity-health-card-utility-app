@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-forms',
@@ -17,12 +18,14 @@ export class FormsComponent implements OnInit {
    get f(){
      return this.form.controls;
    }
-    constructor() { }
+    constructor(private location: Location) { }
   
    
     ngOnInit() {
     }
-  
+    onClick(){
+      this.location.back();
+    }
     onSubmit(){
       this.submitted=true;
       if(this.form.invalid){
