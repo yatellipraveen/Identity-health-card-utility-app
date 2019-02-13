@@ -31,7 +31,7 @@ export class FormsComponent implements OnInit {
       if(this.form.invalid){
         return;
       }
-      alert(JSON.stringify(this.form.value));
+      // alert(JSON.stringify(this.form.value));
     }
 
 }
