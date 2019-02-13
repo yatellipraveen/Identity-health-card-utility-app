@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AssociateComponent } from './associate/associate.component';
 import { SecurityComponent } from './security/security.component';
 import { ShowhcComponent } from './showhc/showhc.component';
+import { BackbuttonComponent } from './backbutton/backbutton.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { ShowhcComponent } from './showhc/showhc.component';
     AdminComponent,
     AssociateComponent,
     SecurityComponent,
-    ShowhcComponent
+    ShowhcComponent,
+    BackbuttonComponent
   ],
   imports: [
     BrowserModule,
