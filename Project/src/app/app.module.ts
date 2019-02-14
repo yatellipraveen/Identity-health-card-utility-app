@@ -22,7 +22,7 @@ import { ShowhcComponent } from './showhc/showhc.component';
     AdminComponent,
     AssociateComponent,
     SecurityComponent,
-    ShowhcComponent
+    ShowhcComponent,
   ],
   imports: [
     BrowserModule,

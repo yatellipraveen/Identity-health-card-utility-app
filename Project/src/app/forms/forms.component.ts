@@ -13,7 +13,8 @@ export class FormsComponent implements OnInit {
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     bgroup: new FormControl('', Validators.required),
-    eid: new FormControl('', Validators.required)
+    eid: new FormControl('', Validators.required),
+    image: new FormControl('',Validators.required)
    });
    get f(){
      return this.form.controls;
@@ -31,7 +32,7 @@ export class FormsComponent implements OnInit {
       if(this.form.invalid){
         return;
       }
-      alert(JSON.stringify(this.form.value));
+      // alert(JSON.stringify(this.form.value));
     }
 
 }
