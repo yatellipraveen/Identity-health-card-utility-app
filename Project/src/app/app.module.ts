@@ -12,12 +12,12 @@ import { AdminComponent } from './admin/admin.component';
 import { AssociateComponent } from './associate/associate.component';
 import { SecurityComponent } from './security/security.component';
 import { ShowhcComponent } from './showhc/showhc.component';
-import { BackbuttonComponent } from './backbutton/backbutton.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     AdminComponent,
     AssociateComponent,
     SecurityComponent,
-    ShowhcComponent,
-    BackbuttonComponent
+    ShowhcComponent
   ],
   imports: [
     BrowserModule,
