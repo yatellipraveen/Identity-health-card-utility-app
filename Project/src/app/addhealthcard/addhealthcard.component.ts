@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import {  ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -26,8 +28,7 @@ export class AddhealthcardComponent implements OnInit {
    get f(){
     return this.registerForm.controls;
   }
-  constructor(private router: Router, private location: Location) { }
-
+  constructor(private router: Router, private location: Location, private firestore: AngularFirestore, private toastr: ToastrService) { }
 
   ngOnInit() {
       // this.registerForm = this.formBuilder.group({
@@ -56,6 +57,9 @@ export class AddhealthcardComponent implements OnInit {
           return;
       }
       console.log(this.registerForm.value)
+      let data= this.registerForm.value;
+      this.firestore.collection('employeeid').add(data);
+     //this.toastr.success('Successfully submitted', 'EMP REGISTER');
       //this.router.navigate(['welcome']);
       // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }

@@ -13,6 +13,11 @@ import { AssociateComponent } from './associate/associate.component';
 import { SecurityComponent } from './security/security.component';
 import { ShowhcComponent } from './showhc/showhc.component';
 import { BackbuttonComponent } from './backbutton/backbutton.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +36,11 @@ import { BackbuttonComponent } from './backbutton/backbutton.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
