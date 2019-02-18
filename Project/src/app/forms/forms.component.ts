@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 })
 export class FormsComponent implements OnInit {
   submitted=false;
+  image:File;
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
@@ -32,7 +33,10 @@ export class FormsComponent implements OnInit {
       if(this.form.invalid){
         return;
       }
-      // alert(JSON.stringify(this.form.value));
     }
+      processFile( image: File ){
+        //`console.log("image added");
+      }
+    
 
 }
