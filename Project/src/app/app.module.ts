@@ -12,6 +12,12 @@ import { AdminComponent } from './admin/admin.component';
 import { AssociateComponent } from './associate/associate.component';
 import { SecurityComponent } from './security/security.component';
 import { ShowhcComponent } from './showhc/showhc.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './signup/signup.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +29,17 @@ import { ShowhcComponent } from './showhc/showhc.component';
     AssociateComponent,
     SecurityComponent,
     ShowhcComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
