@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SubmitComponent } from './submit/submit.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SubmitComponent } from './submit/submit.component';
     AssociateComponent,
     SecurityComponent,
     ShowhcComponent,
-    SubmitComponent
+    SubmitComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
