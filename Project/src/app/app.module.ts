@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SubmitComponent } from './submit/submit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
     AdminComponent,
     AssociateComponent,
     SecurityComponent,
-    ShowhcComponent
+    ShowhcComponent,
+    SubmitComponent
   ],
   imports: [
     BrowserModule,
