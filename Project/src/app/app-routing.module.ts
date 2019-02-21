@@ -8,6 +8,7 @@ import { AssociateComponent } from './associate/associate.component';
 import { SecurityComponent } from './security/security.component';
 import { ShowhcComponent } from './showhc/showhc.component';
 import {ShowidComponent} from './showid/showid.component';
+import {SubmitComponent} from './submit/submit.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path : 'security', component: SecurityComponent},
   { path: 'admin/addhc', component: AddhealthcardComponent},
   {path: 'associate/showid', component: ShowidComponent},
+  {path: 'admin/forms/submit',component: SubmitComponent}
 ];
 
 @NgModule({
