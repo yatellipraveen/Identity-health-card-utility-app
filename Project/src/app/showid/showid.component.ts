@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-showid',
@@ -6,12 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./showid.component.css']
 })
 export class ShowidComponent implements OnInit {
-  name="Seneca Global";
-  id="02027";
-  bldgrp="O+";
 
+name;
+id;
+bldgrp;
+  constructor(private router: Router, private afs: AngularFirestore) {
+   
 
-  constructor() { }
+ // var empid=afs.collection("register").doc('eid');
+ // this.firestore.collection("employeeid").ref.where('eid',"==",'eid').get();
+  //.then(function() {
+    //var name= 
+  //})
+   }
 
   ngOnInit() {
   }

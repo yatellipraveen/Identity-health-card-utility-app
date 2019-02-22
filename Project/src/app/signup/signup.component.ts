@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
     registerForm = new FormGroup({
       eid: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      role :new FormControl ('', Validators.required),
+     role :new FormControl ('', Validators.required),
      });
      get f(){
       return this.registerForm.controls;
@@ -27,14 +27,21 @@ export class SignupComponent implements OnInit {
     
     onSubmit() {
         this.submitted = true;
-  
         // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
         }
+        //else
+        //this.router.navigate(['home']);
         console.log(this.registerForm.value)
         let data= this.registerForm.value;
         this.firestore.collection('register').add(data);
+        if(data.role=='admin')
+        this.router.navigate(['home/admin']);
+        else if(data.role=='associate')
+        this.router.navigate(['home/associate']);
+        else
+        this.router.navigate(['home/security']);
        //this.toastr.success('Successfully submitted', 'EMP REGISTER');
         //this.router.navigate(['welcome']);
         // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forms',
@@ -20,7 +22,7 @@ export class FormsComponent implements OnInit {
    get f(){
      return this.form.controls;
    }
-    constructor(private location: Location) { }
+    constructor(private router: Router, private location: Location, private firestore: AngularFirestore) { }
   
    
     ngOnInit() {
@@ -33,6 +35,11 @@ export class FormsComponent implements OnInit {
       if(this.form.invalid){
         return;
       }
+  
+      console.log(this.form.value)
+      let data= this.form.value;
+      this.firestore.collection('employeeid').add(data);
+      
     }
       processFile( image: File ){
         //`console.log("image added");

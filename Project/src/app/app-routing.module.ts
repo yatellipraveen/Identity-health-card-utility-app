@@ -13,16 +13,17 @@ import {SignupComponent} from './signup/signup.component';
 
 const routes: Routes = [
   {path: '', component:SignupComponent},
+  {path: 'signup', component:SignupComponent},
   {path:'home', component:HomeComponent},
-  {path :'admin', component: AdminComponent},
-  {path:'admin/forms',component: FormsComponent},
-  {path : 'admin/associates', component: AssociateComponent},
-  {path : 'admin/security', component: SecurityComponent},
-  {path : 'associate', component: AssociateComponent},
-  {path: 'associate/showhc', component: ShowhcComponent},
-  {path : 'security', component: SecurityComponent},
-  { path: 'admin/addhc', component: AddhealthcardComponent},
-  {path: 'associate/showid', component: ShowidComponent},
+  {path :'home/admin', component: AdminComponent},
+  {path:'home/admin/forms',component: FormsComponent},
+  {path : 'home/admin/associates', component: AssociateComponent},
+  {path : 'home/admin/security', component: SecurityComponent},
+  {path : 'home/associate', component: AssociateComponent},
+  {path: 'home/associate/showhc', component: ShowhcComponent},
+  {path : 'home/security', component: SecurityComponent},
+  { path: 'home/admin/addhc', component: AddhealthcardComponent},
+  {path: 'home/associate/showid', component: ShowidComponent},
 ];
 
 @NgModule({
