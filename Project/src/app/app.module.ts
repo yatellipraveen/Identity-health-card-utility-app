@@ -14,11 +14,13 @@ import { SecurityComponent } from './security/security.component';
 import { ShowhcComponent } from './showhc/showhc.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule} from '@angular/fire/auth'
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SubmitComponent } from './submit/submit.component';
 import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { MenuComponent } from './menu/menu.component';
     SecurityComponent,
     ShowhcComponent,
     SubmitComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { MenuComponent } from './menu/menu.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     BrowserAnimationsModule, 
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
