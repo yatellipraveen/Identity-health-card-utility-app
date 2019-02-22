@@ -11,7 +11,7 @@
     position: absolute;
     top: 0;
     right: 25px;
-    font-size: 36px;
+    font-size: 40px;
     margin-left: 50px;
   }
   .menu {
@@ -34,4 +34,11 @@
     color: white;
     display: block;
     transition: 0.3s;
+  }
+
+  .logout{
+    position: absolute;
+    left:    0;
+    bottom:   0;
+    margin-bottom: 30px;
   }

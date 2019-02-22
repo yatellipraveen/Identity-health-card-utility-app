@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-menu',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(public af: AngularFireAuth) { }
 
   ngOnInit() {
   }
@@ -17,5 +18,8 @@ export class MenuComponent implements OnInit {
   closeMenu(){
     document.getElementById("myMenu").style.width="0%";
   }
-
+  logout(){
+    this.af.auth.signOut();
+    
+  }
 }
