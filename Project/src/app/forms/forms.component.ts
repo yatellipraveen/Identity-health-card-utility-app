@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {NgForm} from '@angular/forms';
-import { database } from 'firebase';
+import { AngularFireDatabase } from "angularfire2/database";
+import * as  firebase   from  'firebase';
 
 @Component({
   selector: 'app-forms',
@@ -12,6 +12,7 @@ import { database } from 'firebase';
 })
 export class FormsComponent implements OnInit {
   submitted=false;
+  flag= false;
   image:File;
   
   form = new FormGroup({
@@ -19,13 +20,13 @@ export class FormsComponent implements OnInit {
     lastName: new FormControl('', Validators.required),
     bgroup: new FormControl('', Validators.required),
     eid: new FormControl('', Validators.required),
-    image: new FormControl('',Validators.required)
+    image: new FormControl(this.image,Validators.required)
    });
-   data = this.form.value;
+   
    get f(){
      return this.form.controls;
    }
-    constructor(private location: Location, private firestore: AngularFirestore) { }
+    constructor(private location: Location, private firestore: AngularFirestore, private db: AngularFireDatabase) { }
     ngOnInit() {
     }
     onClick(){
@@ -36,10 +37,11 @@ export class FormsComponent implements OnInit {
       if(this.form.invalid){
         return;
       }
-      console.log("dhgfuydgudsg");
-      this.firestore.collection('associateDetails').add(this.data);
-      this.resetForm();
+      let data = this.form.value;
+      this.firestore.collection('associate').add(data);
+      //this.resetForm();
       this.submitted=false;
+      this.flag=true;
     }
     resetForm(){
       this.form.setValue({
@@ -47,11 +49,17 @@ export class FormsComponent implements OnInit {
         lastName:'',
         bgroup:'',
         eid:'',
-        image:''
+        image:null
       });
     }
-    processFile( image: File ){
-      //this.data.image = image;
+    processFile(event :any ){
+      const file: File= event.target.files[0];
+      const metaData= {'contentType': file.type};
+      var string1 = '/photos/';
+      var string2 = file.name;
+      var path = string1 + string2;
+      const storageRef : firebase.storage.Reference=firebase.storage().ref(path);
+      storageRef.put(file,metaData);
+      console.log("Uploading picture...",file.name);
     }
-   
 }

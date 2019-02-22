@@ -19,6 +19,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SubmitComponent } from './submit/submit.component';
 import { MenuComponent } from './menu/menu.component';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +46,9 @@ import { MenuComponent } from './menu/menu.component';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireDatabaseModule, 
     BrowserAnimationsModule, 
+    FlexLayoutModule,
     ToastrModule.forRoot()
   ],
   providers: [],

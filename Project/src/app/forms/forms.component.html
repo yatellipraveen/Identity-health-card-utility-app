@@ -40,13 +40,16 @@
               <input #imageInput
                      type="file"
                      accept="image/*"
-                     (change)="processFile(imageInput)" formControlName="image" [ngClass]="{'is-invalid': (form.get('image').touched && form.get('image').invalid)||submitted && f.image.errors}">
+                     (change)="processFile($event)" formControlName="image" [ngClass]="{'is-invalid': submitted && f.image.errors}" />
+              <div   class="invalid-upload" *ngIf=" submitted && f.image.errors">
+                <div>Picture not uploaded</div>
+              </div>       
           </div>
           <div class="form-group">
             <button class="btn btn-primary" >Submit</button>
             <span style="padding-right:1em;"></span>
             <button (click)="onClick()" class="btn btn-primary" >Back</button>
-            <div *ngIf="submitted && form.valid">
+            <div *ngIf="flag">
               <app-submit></app-submit>
             </div>
           </div>
