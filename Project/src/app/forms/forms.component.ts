@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from "angularfire2/database";
 import * as  firebase   from  'firebase';
+import { async } from 'q';
 
 @Component({
   selector: 'app-forms',
@@ -20,7 +21,8 @@ export class FormsComponent implements OnInit {
     lastName: new FormControl('', Validators.required),
     bgroup: new FormControl('', Validators.required),
     eid: new FormControl('', Validators.required),
-    image: new FormControl(this.image,Validators.required)
+    image: new FormControl(this.image,Validators.required),
+    imagesrc:new FormControl('')
    });
    
    get f(){
@@ -39,7 +41,7 @@ export class FormsComponent implements OnInit {
       }
       let data = this.form.value;
       this.firestore.collection('associate').add(data);
-      //this.resetForm();
+      this.resetForm();
       this.submitted=false;
       this.flag=true;
     }
@@ -49,17 +51,30 @@ export class FormsComponent implements OnInit {
         lastName:'',
         bgroup:'',
         eid:'',
-        image:null
+        image:null,
+        imagesrc:''
       });
     }
-    processFile(event :any ){
+    async processFile(event :any ){
       const file: File= event.target.files[0];
       const metaData= {'contentType': file.type};
       var string1 = '/photos/';
       var string2 = file.name;
       var path = string1 + string2;
-      const storageRef : firebase.storage.Reference=firebase.storage().ref(path);
-      storageRef.put(file,metaData);
-      console.log("Uploading picture...",file.name);
+      var storageRef :  firebase.storage.Reference=  firebase.storage().ref(path);
+      await storageRef.put(file,metaData);
+      storageRef.getDownloadURL().then(downloadURL => {
+         const imageUrl = downloadURL;
+        console.log('URL:' + imageUrl);
+        this.form.patchValue({ 
+          imagesrc: imageUrl
+        });
+      });
+      /*var url = storageRef.getDownloadURL();
+      console.log(url);
+      this.form.patchValue({ 
+        image: null
+      });*/
+      console.log("Uploading file ......",file.name);
     }
 }
