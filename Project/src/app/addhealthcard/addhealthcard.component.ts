@@ -18,6 +18,7 @@ export class AddhealthcardComponent implements OnInit {
     policyno :new FormControl ('', Validators.required),
     uhid: new FormControl ('', Validators.required),
     gender: new FormControl ('', Validators.required),
+    email: new FormControl('',Validators.required),
     eno: new FormControl ('', Validators.required),
     dob: new FormControl ('', Validators.required),
     cardno: new FormControl ('', Validators.required),
@@ -57,7 +58,7 @@ export class AddhealthcardComponent implements OnInit {
       }
       console.log(this.registerForm.value)
       let data= this.registerForm.value;
-      this.firestore.collection('employeehc').add(data);
+      this.firestore.collection('employeehc').doc(this.registerForm.value.email).set(data);
      //this.toastr.success('Successfully submitted', 'EMP REGISTER');
       //this.router.navigate(['welcome']);
       // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
