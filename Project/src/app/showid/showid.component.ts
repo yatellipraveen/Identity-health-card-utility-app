@@ -14,7 +14,15 @@ name;
 id;
 bldgrp;
   constructor(private router: Router, private afs: AngularFirestore) {
-   
+    //var ref=afs.collection('employeeid');
+    //let userRef = this.afs.collection('register').ref.where('eid','==',ref.doc);
+    //userRef.get().then((result) => {
+    //result.forEach(doc => {
+    //console.log(doc.data());
+    //added benefit of getting the document id / key
+    //console.log(doc.id);
+    //})
+    //})
 
  // var empid=afs.collection("register").doc('eid');
  // this.firestore.collection("employeeid").ref.where('eid',"==",'eid').get();

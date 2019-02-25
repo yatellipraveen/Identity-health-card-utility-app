@@ -3,11 +3,11 @@
   <div class="col-12">
       <form name="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="eid">Admin ID</label>
-          <input type="text"  class="form-control"  pattern="^[A-Za-z0-9]+$" formControlName="eid" [ngClass]="{ 'is-invalid': submitted && f.eid.errors }"/>
-          <div *ngIf="submitted && f.eid.errors" class="invalid-feedback">
-            <div *ngIf="f.eid.errors.required">Employee ID is required</div>
-            <div *ngIf="f.eid.errors.pattern">ID should contain only alphanumeric</div>
+          <label for="adminid">Admin ID</label>
+          <input type="text"  class="form-control"  pattern="^[A-Za-z0-9]+$" formControlName="adminid" [ngClass]="{ 'is-invalid': submitted && f.adminid.errors }"/>
+          <div *ngIf="submitted && f.adminid.errors" class="invalid-feedback">
+            <div *ngIf="f.adminid.errors.required">Employee ID is required</div>
+            <div *ngIf="f.adminid.errors.pattern">ID should contain only alphanumeric</div>
         </div>
         </div>
         <div class="form-group">
