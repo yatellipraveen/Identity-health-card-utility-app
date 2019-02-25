@@ -28,7 +28,9 @@ export class FormsComponent implements OnInit {
    get f(){
      return this.form.controls;
    }
-    constructor(private location: Location, private firestore: AngularFirestore, private db: AngularFireDatabase) { }
+    constructor(private location: Location, 
+      private firestore: AngularFirestore,
+       private db: AngularFireDatabase ) { }
     ngOnInit() {
     }
     onClick(){
