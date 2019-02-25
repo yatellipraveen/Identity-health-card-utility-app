@@ -22,6 +22,8 @@ const routes: Routes = [
   {path:'associate/showhc',component:ShowhcComponent},
   {path : 'security', component: SecurityComponent},
 
+
+  {path: '**', redirectTo:''}
   //not required
   // {path :'admin', component: AdminComponent},
   // {path:'admin/forms',component: FormsComponent},
@@ -34,7 +36,8 @@ const routes: Routes = [
   // {path: 'associate/showid', component: ShowidComponent},
   // {path: 'admin/forms/submit',component: SubmitComponent},
   // {path: 'login', component:LoginComponent},
-  // {path: '**', redirectTo:''}
+  
+ 
 
 ];
 
