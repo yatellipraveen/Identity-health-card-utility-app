@@ -5,13 +5,20 @@
 export const environment = {
   production: false,
   firebaseConfig :{
-    apiKey: "AIzaSyCQmnQ8bhpTGOkcXoioEeUNQ4e5YsEZMZo",
-    authDomain: "attendence-40212.firebaseapp.com",
-    databaseURL: "https://attendence-40212.firebaseio.com",
-    projectId: "attendence-40212",
-    storageBucket: "attendence-40212.appspot.com",
-    messagingSenderId: "1082050218050"
  
+    // apiKey: "AIzaSyCQmnQ8bhpTGOkcXoioEeUNQ4e5YsEZMZo",
+    // authDomain: "attendence-40212.firebaseapp.com",
+    // databaseURL: "https://attendence-40212.firebaseio.com",
+    // projectId: "attendence-40212",
+    // storageBucket: "attendence-40212.appspot.com",
+    // messagingSenderId: "1082050218050"
+ 
+    apiKey: "AIzaSyDDO4-FgQruX9GMUdGfhkhgDkun-k0u6T8",
+    authDomain: "attendance-19db4.firebaseapp.com",
+    databaseURL: "https://attendance-19db4.firebaseio.com",
+    projectId: "attendance-19db4",
+    storageBucket: "attendance-19db4.appspot.com",
+    messagingSenderId: "42218411122"
   }
 };
 

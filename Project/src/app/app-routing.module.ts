@@ -10,10 +10,11 @@ import { ShowhcComponent } from './showhc/showhc.component';
 import {ShowidComponent} from './showid/showid.component';
 import {SignupComponent} from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import {SubmitComponent} from './submit/submit.component';
 
 
 const routes: Routes = [
-  {path: '', component:SignupComponent},
+  {path: '', component:LoginComponent},
   {path: 'signup', component:SignupComponent},
   {path:'home', component:HomeComponent},
   {path :'home/admin', component: AdminComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'home/admin/addhc', component: AddhealthcardComponent},
   {path: 'home/associate/showid', component: ShowidComponent},
   {path: 'login', component:LoginComponent},
-//import {SubmitComponent} from './submit/submit.component';
+  {path: '**', redirectTo:''}
 
 
 
@@ -39,7 +40,7 @@ const routes: Routes = [
  // {path:'associate/showid',component:ShowidComponent},
 //  {path:'associate/showhc',component:ShowhcComponent},
  //{path : 'security', component: SecurityComponent},
-
+  
   //not required
   // {path :'admin', component: AdminComponent},
   // {path:'admin/forms',component: FormsComponent},
@@ -51,8 +52,8 @@ const routes: Routes = [
   // { path: 'admin/addhc', component: AddhealthcardComponent},
   // {path: 'associate/showid', component: ShowidComponent},
   // {path: 'admin/forms/submit',component: SubmitComponent},
-   
-  {path: '**', redirectTo:''}
+ 
+  // {path: 'login', component:LoginComponent},
 ];
 
 @NgModule({

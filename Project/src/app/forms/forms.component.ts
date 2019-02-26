@@ -16,12 +16,15 @@ export class FormsComponent implements OnInit {
   submitted=false;
   flag= false;
   image:File;
+  upload=false;
   
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     bgroup: new FormControl('', Validators.required),
+    role: new FormControl('', Validators.required),
     eid: new FormControl('', Validators.required),
+    email: new FormControl('',Validators.required),
     image: new FormControl(this.image,Validators.required),
     imagesrc:new FormControl('')
    });
@@ -30,7 +33,9 @@ export class FormsComponent implements OnInit {
      return this.form.controls;
    }   
 
-    constructor(private location: Location, private firestore: AngularFirestore, private db: AngularFireDatabase,private router: Router) { }
+    constructor(private location: Location, 
+      private firestore: AngularFirestore,
+       private db: AngularFireDatabase ) { }
     ngOnInit() {
     }
     onClick(){
@@ -41,16 +46,26 @@ export class FormsComponent implements OnInit {
       if(this.form.invalid){
         return;
       }
+ 
   
-      console.log(this.form.value)
-      let data= this.form.value;
-      this.firestore.collection('employeeid').add(data);
+    //   console.log(this.form.value)
+    //   let data= this.form.value;
+    //   this.firestore.collection('employeeid').add(data);
       
-      //data = this.form.value;
-     // this.firestore.collection('associate').add(data);
-      this.resetForm();
-      this.submitted=false;
-      this.flag=true;
+    //   //data = this.form.value;
+    //  // this.firestore.collection('associate').add(data);
+    //   this.resetForm();
+    //   this.submitted=false;
+    //   this.flag=true;
+
+      let data = this.form.value;
+      this.firestore.collection('associate').doc(this.form.value.email).set(data);
+      if(this.upload){
+        this.resetForm();
+        this.submitted=false;
+        this.flag=true;
+        this.upload=false;
+      }
     }
     resetForm(){
       this.form.setValue({
@@ -58,6 +73,8 @@ export class FormsComponent implements OnInit {
         lastName:'',
         bgroup:'',
         eid:'',
+        email:'',
+        role:'',
         image:null,
         imagesrc:''
       });
@@ -77,11 +94,7 @@ export class FormsComponent implements OnInit {
           imagesrc: imageUrl
         });
       });
-      /*var url = storageRef.getDownloadURL();
-      console.log(url);
-      this.form.patchValue({ 
-        image: null
-      });*/
+      this.upload=true;
       console.log("Uploading file ......",file.name);
     }
 }

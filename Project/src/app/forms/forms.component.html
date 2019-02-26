@@ -36,15 +36,35 @@
             </div>
           </div>
           <div class="form-group">
-            <label >Upload an Image</label>
-              <input #imageInput
-                     type="file"
-                     accept="image/*"
-                     (change)="processFile($event)" formControlName="image" [ngClass]="{'is-invalid': submitted && f.image.errors}" />
-              <div   class="invalid-upload" *ngIf=" submitted && f.image.errors">
-                <div>Picture not uploaded</div>
-              </div>       
-          </div>
+            <label>Role</label>
+              <select formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }" class="browser-default custom-select">
+                <!-- <option selected>Open this select menu</option> -->
+                <option value="Admin">Admin</option>
+                <option value="Associate">Associate</option>
+                <option value="Security">Security</option>
+              </select>
+              <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                <div *ngIf="f.role.errors.required">This field is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Id</label>
+          <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors}">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.pattern">Enter a valid Email</div>
+        </div>
+        <div class="form-group">
+          <label >Upload an Image</label>
+            <input #imageInput
+                   type="file"
+                   accept="image/*"
+                   (change)="processFile($event)" formControlName="image" [ngClass]="{'is-invalid': submitted && f.image.errors}" />
+            <div   class="invalid-upload" *ngIf=" submitted && f.image.errors">
+              <div>Picture not uploaded</div>
+            </div>       
+        </div>
+        </div>
           <div class="form-group">
             <button class="btn btn-primary" >Submit</button>
             <span style="padding-right:1em;"></span>

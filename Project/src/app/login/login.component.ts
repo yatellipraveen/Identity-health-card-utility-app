@@ -4,6 +4,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from 'firebase';
+import * as firebase from 'firebase';
+import { getLocaleDateFormat } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +17,28 @@ export class LoginComponent implements OnInit {
   user : Observable <firebase.User>;
   loginForm: FormGroup;
   submitted=false;
+  // abcd: firebase.firestore.DocumentData = documentSnapshot.data();
+
   constructor(private formBuilder: FormBuilder, private firestore : AngularFirestore, public af: AngularFireAuth,private router: Router) {
       this.af.authState.subscribe(
         (auth) =>{
           if(auth!=null){
             this.user=af.authState;
-            console.log("succesfull Login");
-            this.router.navigate(['admin']);
+            var collectionReference = this.firestore.collection('associate');
+            var query = collectionReference.ref.where('uid', '==', auth.uid);
+            query.get().then(function(querySnapshot) {
+              querySnapshot.forEach(function (documentSnapshot) {
+                  var data = documentSnapshot.data();
+                  // this.abcd = data;
+                  // console.log(this.abcd.role);
+                  if(data.role=='associate') router.navigate(['associate']);
+                  else if(data.role=='admin') router.navigate(['admin']);
+                  else if(data.role=='security') router.navigate(['security']);
+                });
+              });
           }
         }
-      )
+      );
    }
 
   ngOnInit() {
@@ -44,5 +59,8 @@ export class LoginComponent implements OnInit {
     this.af.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password);
   }
 
+
+
  
+
 }

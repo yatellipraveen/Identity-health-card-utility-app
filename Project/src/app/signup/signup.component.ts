@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
             return;
         }
         else
-        this.router.navigate(['home/admin']);
+        this.router.navigate(['home/associate']);
         //else
         //this.router.navigate(['home']);
         console.log(this.registerForm.value);
