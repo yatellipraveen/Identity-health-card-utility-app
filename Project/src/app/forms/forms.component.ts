@@ -55,7 +55,7 @@ export class FormsComponent implements OnInit {
     onClick(){
       this.location.back();
     }
-    onSubmit(){
+    async onSubmit(){
       this.submitted=true;
       if(this.form.invalid){
         return;
@@ -63,15 +63,16 @@ export class FormsComponent implements OnInit {
       
       let data = this.form.value;
       this.firestore.collection('associate').doc(this.form.value.email).set(data);
-    this.secondaryApp.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
-  });
-    
+
+      this.secondaryApp.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
+      });
       if(this.upload){
         this.resetForm();
         this.submitted=false;
         this.flag=true;
         this.upload=false;
       }
+      this.location.back();
     }
     resetForm(){
       this.form.setValue({

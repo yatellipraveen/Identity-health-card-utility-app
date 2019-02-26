@@ -26,20 +26,7 @@ export interface Data {
 })
 export class ShowhcComponent implements OnInit {
   user : Observable <firebase.User>;
-
-  
-  
-  // name:string;
-  // cardno:string;
-  // dob:string;
-  // eno:string;
-  // gender:string;
-  // policyno:string;
-  // uhid:string;
-  // uid:string;
-  // validfrom:string;
-  // validupto:string;
-
+  age:number;
   articlesCollection: AngularFirestoreCollection<Data>;
   articles: Observable<Data[]>;
   article: any;
@@ -67,7 +54,16 @@ export class ShowhcComponent implements OnInit {
         this.articlesCollection = this.firestore.collection('employeehc');
         this.articles = this.articlesCollection.valueChanges();
         this.articlesCollection.doc(auth.email).ref.get().then((doc) => {
-        this.article = doc.data();  
+        this.article = doc.data(); 
+        var fields= this.article.dob.split('/');
+        var year = Number(fields[2]);
+        var month = Number(fields[1]);
+        var day = Number(fields[0]);
+        var today = new Date();
+        this.age = today.getFullYear() - year;
+        if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
+        this.age--; 
+        }
         });
       }
     });
