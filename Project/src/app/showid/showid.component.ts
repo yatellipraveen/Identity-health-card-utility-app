@@ -9,6 +9,7 @@ export interface Data {
   lastName: string,
   bgroup: string
   eid:string;
+  imagesrc:string;
 }
 @Component({
   selector: 'app-showid',
@@ -16,7 +17,8 @@ export interface Data {
   styleUrls: ['./showid.component.css']
 })
 export class ShowidComponent implements OnInit {
- 
+  
+
 
   user : Observable <firebase.User>;
   
