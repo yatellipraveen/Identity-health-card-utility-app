@@ -31,6 +31,7 @@ export class ShowhcComponent implements OnInit {
   dob:string;
   eno:string;
   gender:string;
+  age:string;
   policyno:string;
   uhid:string;
   uid:string;
