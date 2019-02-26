@@ -26,6 +26,8 @@ export interface Data {
 })
 export class ShowhcComponent implements OnInit {
   user : Observable <firebase.User>;
+
+  
   
   // name:string;
   // cardno:string;
