@@ -1,6 +1,6 @@
 <img src="../assets/senecaglobal.png" class="img-responsive" alt="logo" width="100%" height="30%"> 
 <div class="container">
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="Login()">
   <div class="form-group">
       <label for="username">Username</label>
       <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />

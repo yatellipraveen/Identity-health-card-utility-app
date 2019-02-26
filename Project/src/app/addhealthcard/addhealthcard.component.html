@@ -104,6 +104,9 @@
                     <button class="btn btn-primary" >Submit</button>
                     <span style="padding-right:1em;"></span>
                     <button (click)="onClick()" class="btn btn-primary" >Back</button>
+                    <div *ngIf="flag">
+                        <app-submit></app-submit>
+                    </div>
                 </div>
               </form>
               <!-- {{registerForm.value| json}} -->

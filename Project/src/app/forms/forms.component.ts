@@ -33,25 +33,32 @@ export class FormsComponent implements OnInit {
    }
     constructor(private location: Location, 
       private firestore: AngularFirestore,
-       private db: AngularFireDatabase ) { }
+       private db: AngularFireDatabase ) { 
+       }
     ngOnInit() {
     }
     onClick(){
       this.location.back();
     }
-    onSubmit(){
+    async onSubmit(){
       this.submitted=true;
       if(this.form.invalid){
         return;
       }
       let data = this.form.value;
       this.firestore.collection('associate').doc(this.form.value.email).set(data);
+      console.log("hgdjhdsgkjhdsgkjds",firebase.auth());
+      await firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
+      });
+      
+      console.log("hrlhgklkfhjlkjhlkfjhlkdhlkdlkh",firebase.auth());
       if(this.upload){
         this.resetForm();
         this.submitted=false;
         this.flag=true;
         this.upload=false;
       }
+      this.location.back();
     }
     resetForm(){
       this.form.setValue({

@@ -10,23 +10,23 @@
       <div class="col-12">
           <div class="row">
               <label class="left">NAME</label>
-              <span style="margin-left:18%">: {{name}}</span>
+              <span style="margin-left:18%">: {{article?.firstName}}</span>
             </div>
           <div class="row">
             <label class="left">Policy No</label>
-            <span style="margin-left:10.5%">: {{policyno}}</span>
+            <span style="margin-left:10.5%">: {{article?.lastName}}</span>
           </div>
           <div class="row">
             <label class="left">UHID</label>
-            <span style="margin-left:19.5%">: {{uhid}}</span>
+            <span style="margin-left:19.5%">: {{article?.uhid}}</span>
           </div>
           <div class="row">
             <label class="left">Emp ID</label>
-            <span style="margin-left:15.5%">: {{eno}}</span>
+            <span style="margin-left:15.5%">: {{article?.eno}}</span>
           </div>
           <div class="row">
               <label class="left">Gender</label>
-              <span style="margin-left:15%">: {{gender}}</span>
+              <span style="margin-left:15%">: {{article?.gender}}</span>
             </div>
             <div class="row">
                 <label class="left">Age</label>
@@ -34,7 +34,7 @@
               </div>
           <div class="row">
             <label class="left">Validity</label>
-            <span style="margin-left:2%">: {{validfrom}} to {{validupto}}</span>
+            <span style="margin-left:2%">: {{article?.validfrom}} to {{article?.validupto}}</span>
           </div>
       </div>
     </div>
