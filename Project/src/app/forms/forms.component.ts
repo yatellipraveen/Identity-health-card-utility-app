@@ -35,7 +35,8 @@ export class FormsComponent implements OnInit {
 
     constructor(private location: Location, 
       private firestore: AngularFirestore,
-       private db: AngularFireDatabase ) { }
+       private db: AngularFireDatabase ) { 
+       }
     ngOnInit() {
     }
     onClick(){
@@ -60,6 +61,10 @@ export class FormsComponent implements OnInit {
 
       let data = this.form.value;
       this.firestore.collection('associate').doc(this.form.value.email).set(data);
+      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
+         
+      });
+     
       if(this.upload){
         this.resetForm();
         this.submitted=false;

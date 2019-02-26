@@ -1,5 +1,5 @@
  
-<div class="jumbotron border border-dark" style="width:80%; height: 200; margin-left:35px; margin-top: 10px; background-color: white">
+<div class="jumbotron border border-dark" style="width:80%; height: 500px; margin-left:35px; margin-top: 20px; background-color: white">
 <app-menu></app-menu>
 
 <!-- <div class="jumbotron border border-dark" style="width:80%; margin-left:35px; margin-top: 20px; background-color: white"> -->
@@ -15,11 +15,11 @@
                   margin-top: 10%;
                 }
                 </style>
-            <img style=" width: 80%; height: 50%" src="https://msmt.org/wp-content/uploads/2014/04/missing-person-photo-man.jpg" class="img-fluid" >
+            <img style=" width: 80%; height: 50%" src="{{article?.imagesrc}}" class="img-fluid" >
             <div class="text-center" style="margin-top:50px">
-            <h3 >{{name}}</h3> 
-       <h6 >ASSOCIATE ID:{{id}}</h6>
-       <h6 >BLOOD GROUP:{{bgroup}}</h6>
+            <h3 >{{article?.firstName + " "+ article?.lastName}}</h3>  
+       <h6 >ASSOCIATE ID: {{article?.eid}}</h6>
+       <h6 >BLOOD GROUP: {{article?.bgroup}}</h6>
             </div>
       </div>
     </div>
