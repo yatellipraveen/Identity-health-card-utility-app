@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { AngularFireDatabase } from "angularfire2/database";
+import * as  firebase   from  'firebase';
+import { async } from 'q';
 
 @Component({
   selector: 'app-forms',
@@ -11,20 +14,23 @@ import { Router } from '@angular/router';
 })
 export class FormsComponent implements OnInit {
   submitted=false;
+  flag= false;
   image:File;
+  
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     bgroup: new FormControl('', Validators.required),
     eid: new FormControl('', Validators.required),
-    image: new FormControl('',Validators.required)
+    image: new FormControl(this.image,Validators.required),
+    imagesrc:new FormControl('')
    });
+   
    get f(){
      return this.form.controls;
-   }
-    constructor(private router: Router, private location: Location, private firestore: AngularFirestore) { }
-  
-   
+   }   
+
+    constructor(private location: Location, private firestore: AngularFirestore, private db: AngularFireDatabase,private router: Router) { }
     ngOnInit() {
     }
     onClick(){
@@ -40,10 +46,42 @@ export class FormsComponent implements OnInit {
       let data= this.form.value;
       this.firestore.collection('employeeid').add(data);
       
+      //data = this.form.value;
+     // this.firestore.collection('associate').add(data);
+      this.resetForm();
+      this.submitted=false;
+      this.flag=true;
     }
-      processFile( image: File ){
-        //`console.log("image added");
-      }
-    
-
+    resetForm(){
+      this.form.setValue({
+        firstName: '',
+        lastName:'',
+        bgroup:'',
+        eid:'',
+        image:null,
+        imagesrc:''
+      });
+    }
+    async processFile(event :any ){
+      const file: File= event.target.files[0];
+      const metaData= {'contentType': file.type};
+      var string1 = '/photos/';
+      var string2 = file.name;
+      var path = string1 + string2;
+      var storageRef :  firebase.storage.Reference=  firebase.storage().ref(path);
+      await storageRef.put(file,metaData);
+      storageRef.getDownloadURL().then(downloadURL => {
+         const imageUrl = downloadURL;
+        console.log('URL:' + imageUrl);
+        this.form.patchValue({ 
+          imagesrc: imageUrl
+        });
+      });
+      /*var url = storageRef.getDownloadURL();
+      console.log(url);
+      this.form.patchValue({ 
+        image: null
+      });*/
+      console.log("Uploading file ......",file.name);
+    }
 }

@@ -2,3 +2,8 @@
     height:auto;
 }
 
+.invalid-upload{
+    font-size: 83%;
+    color: #dc3545;
+}
+

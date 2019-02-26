@@ -11,6 +11,7 @@ export const environment = {
     projectId: "attendence-40212",
     storageBucket: "attendence-40212.appspot.com",
     messagingSenderId: "1082050218050"
+ 
   }
 };
 

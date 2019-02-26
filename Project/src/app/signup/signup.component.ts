@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['home/admin']);
         //else
         //this.router.navigate(['home']);
-        console.log(this.registerForm.value)
+        console.log(this.registerForm.value);
         let data= this.registerForm.value;
         this.firestore.collection('register').add(data);
        //this.toastr.success('Successfully submitted', 'EMP REGISTER');
