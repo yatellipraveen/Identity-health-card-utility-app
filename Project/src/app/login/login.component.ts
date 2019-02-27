@@ -38,8 +38,6 @@ export class LoginComponent implements OnInit {
               .catch(err => {
                 console.log('Error getting document', err);
               });
-          }else{
-            this.flag=true;
           }
         }
       );
@@ -59,7 +57,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
         return;
     }
-    this.af.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password);
+    this.af.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password).catch(error=>{
+      if(error){
+      var er=error;
+      this.flag=true;
+      }
+
+    });
   }
 
 }
