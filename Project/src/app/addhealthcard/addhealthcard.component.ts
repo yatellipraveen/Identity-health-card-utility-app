@@ -56,7 +56,13 @@ export class AddhealthcardComponent implements OnInit {
       // stop here if form is invalid
       if (this.registerForm.invalid) {
           return;
-      }
+      }      
+
+      console.log("sjfhjdgfkd");
+      console.log(this.registerForm.value);
+      //let data= this.registerForm.value;
+      //this.firestore.collection('employeehc').add(data);
+      
       console.log(this.registerForm.value)
       let data= this.registerForm.value;
       this.firestore.collection('employeehc').doc(this.registerForm.value.email).set(data);
