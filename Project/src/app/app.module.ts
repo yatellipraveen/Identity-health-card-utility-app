@@ -51,7 +51,9 @@ import { LoginComponent } from './login/login.component';
     AngularFireDatabaseModule, 
     BrowserAnimationsModule, 
     FlexLayoutModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      toastClass: 'toast toast-bootstrap-compatibility-fix'
+    }),
     AngularFireAuthModule
   ],
   providers: [],
