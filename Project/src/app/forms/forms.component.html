@@ -22,12 +22,22 @@
           </div>
           </div>
           <div class="form-group">
-            <label for="bgroup">BloodGroup</label>
-            <input type="text" class="form-control" formControlName="bgroup" [ngClass]="{'is-invalid':submitted && f.bgroup.errors}">
-            <div  class="invalid-feedback">
-              <div >BloodGroup is required</div>
+              <label>BloodGroup</label>
+              <select formControlName="bgroup" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bgroup.errors }" class="browser-default custom-select">
+                <!-- <option selected>Open this select menu</option> -->
+                <option value="o+ve">O+VE</option>
+                <option value="o-ve">O-VE</option>
+                <option value="a+ve">A+VE</option>
+                <option value="a-ve">A-VE</option>
+                <option value="b+ve">B+VE</option>
+                <option value="b-ve">B-VE</option>
+                <option value="ab+ve">AB+VE</option>
+                <option value="ab-ve">AB-VE</option>
+              </select>
+              <div *ngIf="submitted && f.bgroup.errors" class="invalid-feedback">
+                <div *ngIf="f.bgroup.errors.required">Blood Group is required</div>
             </div>
-          </div>
+            </div>
           <div class="form-group">
             <label for="eid">Associate Id</label>
             <input type="text" class="form-control" formControlName="eid" [ngClass]="{'is-invalid': submitted && f.eid.errors}">

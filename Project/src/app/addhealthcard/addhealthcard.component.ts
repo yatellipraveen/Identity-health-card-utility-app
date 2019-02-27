@@ -12,6 +12,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AddhealthcardComponent implements OnInit {
   submitted = false;
+  flag= false;
   registerForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
@@ -65,8 +66,26 @@ export class AddhealthcardComponent implements OnInit {
       console.log(this.registerForm.value)
       let data= this.registerForm.value;
       this.firestore.collection('employeehc').doc(this.registerForm.value.email).set(data);
+        this.resetForm();
+        this.submitted=false;
+        this.flag=true;
      //this.toastr.success('Successfully submitted', 'EMP REGISTER');
       //this.router.navigate(['welcome']);
       // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+  }
+    resetForm(){
+      this.registerForm.setValue({
+      firstName: '',
+      lastName:'',
+    policyno : '',
+    uhid: '',
+    gender: '',
+    email:'',
+    eno: '',
+    dob: '',
+    cardno: '',
+    validfrom:'',
+    validupto:''
+    });
   }
 }

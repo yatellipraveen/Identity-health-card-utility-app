@@ -5,7 +5,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from "angularfire2/database";
 import * as  firebase   from  'firebase';
+import * as firebase1 from 'firebase';
 import { async } from 'q';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Tree } from '@angular/router/src/utils/tree';
 
 @Component({
   selector: 'app-forms',
@@ -17,6 +20,16 @@ export class FormsComponent implements OnInit {
   flag= false;
   image:File;
   upload=false;
+
+  config = {
+    apiKey: "AIzaSyATvwgaT6jgpJ-hqi_Ex1wLSg2uvC8NSXw",
+    authDomain: "firestorecrud-21741.firebaseapp.com",
+    databaseURL: "https://firestorecrud-21741.firebaseio.com",
+    projectId: "firestorecrud-21741",
+    storageBucket: "firestorecrud-21741.appspot.com",
+    messagingSenderId: "185568206116"
+  }
+  secondaryApp = firebase.initializeApp(this.config, "Secondary");
   
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -35,19 +48,24 @@ export class FormsComponent implements OnInit {
 
     constructor(private location: Location, 
       private firestore: AngularFirestore,
-       private db: AngularFireDatabase ) { 
+      public af : AngularFireAuth,
+      public af1 :AngularFireAuth,
+      private router: Router
+
+         ) { 
        }
     ngOnInit() {
     }
     onClick(){
       this.location.back();
     }
-    onSubmit(){
+    async onSubmit(){
       this.submitted=true;
       if(this.form.invalid){
         return;
       }
- 
+      else
+        this.router.navigate(['admin']);
   
     //   console.log(this.form.value)
     //   let data= this.form.value;
@@ -61,16 +79,17 @@ export class FormsComponent implements OnInit {
 
       let data = this.form.value;
       this.firestore.collection('associate').doc(this.form.value.email).set(data);
-      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
-         
+
+      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
       });
-     
       if(this.upload){
         this.resetForm();
         this.submitted=false;
         this.flag=true;
         this.upload=false;
+        
       }
+      this.location.back();
     }
     resetForm(){
       this.form.setValue({
