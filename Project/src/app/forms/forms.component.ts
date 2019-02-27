@@ -4,9 +4,7 @@ import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from "angularfire2/database";
 import * as  firebase   from  'firebase';
-import * as firebase1 from 'firebase';
 import { async } from 'q';
-import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-forms',
@@ -18,16 +16,6 @@ export class FormsComponent implements OnInit {
   flag= false;
   image:File;
   upload=false;
-
-  config = {
-    apiKey: "AIzaSyATvwgaT6jgpJ-hqi_Ex1wLSg2uvC8NSXw",
-    authDomain: "firestorecrud-21741.firebaseapp.com",
-    databaseURL: "https://firestorecrud-21741.firebaseio.com",
-    projectId: "firestorecrud-21741",
-    storageBucket: "firestorecrud-21741.appspot.com",
-    messagingSenderId: "185568206116"
-  }
-  secondaryApp = firebase.initializeApp(this.config, "Secondary");
   
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -45,34 +33,30 @@ export class FormsComponent implements OnInit {
    }
     constructor(private location: Location, 
       private firestore: AngularFirestore,
-      public af : AngularFireAuth,
-      public af1 :AngularFireAuth
-
-         ) { 
+       private db: AngularFireDatabase ) { 
        }
     ngOnInit() {
     }
     onClick(){
       this.location.back();
     }
-    async onSubmit(){
+    onSubmit(){
       this.submitted=true;
       if(this.form.invalid){
         return;
       }
-      
       let data = this.form.value;
       this.firestore.collection('associate').doc(this.form.value.email).set(data);
-
-      this.secondaryApp.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
+      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
+         
       });
+     
       if(this.upload){
         this.resetForm();
         this.submitted=false;
         this.flag=true;
         this.upload=false;
       }
-      this.location.back();
     }
     resetForm(){
       this.form.setValue({
