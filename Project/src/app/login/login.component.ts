@@ -17,11 +17,12 @@ export class LoginComponent implements OnInit {
   user : Observable <firebase.User>;
   loginForm: FormGroup;
   submitted=false;
-
+  flag=false;
   constructor(private formBuilder: FormBuilder, private firestore : AngularFirestore, public af: AngularFireAuth,private router: Router) {
       this.af.authState.subscribe(
         (auth) =>{
           if(auth!=null){
+            this.flag=false;
             this.user=af.authState;
             var cityRef = firestore.collection('associate').doc(auth.email);
             var getDoc = cityRef.ref.get()
@@ -37,6 +38,8 @@ export class LoginComponent implements OnInit {
               .catch(err => {
                 console.log('Error getting document', err);
               });
+          }else{
+            this.flag=true;
           }
         }
       );
@@ -58,5 +61,4 @@ export class LoginComponent implements OnInit {
     }
     this.af.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password);
   }
-
 }

@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule} from '@angular/fire/auth'
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SubmitComponent } from './submit/submit.component';
 import { MenuComponent } from './menu/menu.component';
@@ -24,6 +25,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './login/login.component';
+ 
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { LoginComponent } from './login/login.component';
     AssociateComponent,
     SecurityComponent,
     ShowhcComponent,
+    SignupComponent,
     SubmitComponent,
     MenuComponent,
     LoginComponent
@@ -48,6 +51,7 @@ import { LoginComponent } from './login/login.component';
     NgbModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    BrowserAnimationsModule,
     AngularFireDatabaseModule, 
     BrowserAnimationsModule, 
     FlexLayoutModule,

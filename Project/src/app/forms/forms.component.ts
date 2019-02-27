@@ -2,11 +2,14 @@ import { Component, OnInit, ɵConsole } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { AngularFireDatabase } from "angularfire2/database";
 import * as  firebase   from  'firebase';
 import { async } from 'q';
 import { ToastrService} from 'ngx-toastr';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Tree } from '@angular/router/src/utils/tree';
+
 
 @Component({
   selector: 'app-forms',
@@ -33,14 +36,15 @@ export class FormsComponent implements OnInit {
    
    get f(){
      return this.form.controls;
-   }
+   }   
+
     constructor(private location: Location, 
       private firestore: AngularFirestore,
       public af : AngularFireAuth,
       public af1 :AngularFireAuth,
-      private toastr : ToastrService
-
-         ) { 
+      private toastr : ToastrService,
+      private router: Router,
+       private db: AngularFireDatabase ) { 
        }
     ngOnInit() {
     }
@@ -74,7 +78,8 @@ export class FormsComponent implements OnInit {
       this.resetForm();
       this.submitted=false;
       this.flag=true;
-    }
+      }
+  
     resetForm(){
       this.form.setValue({
         firstName: '',
@@ -87,7 +92,7 @@ export class FormsComponent implements OnInit {
         imagesrc:''
       });
     }
-    async processFile(event :any ){
+    processFile(event :any ){
        this.file =  event.target.files[0]; 
     }
 }
