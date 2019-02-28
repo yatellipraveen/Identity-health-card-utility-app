@@ -21,7 +21,7 @@ export class FormsComponent implements OnInit {
   flag= false;
   image:File;
   file:File;
-  upload=false;
+  success=false;
   
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -56,6 +56,7 @@ export class FormsComponent implements OnInit {
       if(this.form.invalid){
         return;
       } 
+      this.flag=true;
       const metaData= {'contentType': this.file.type};
       var string1 = '/photos/';
       var string2 = this.file.name;
@@ -77,7 +78,8 @@ export class FormsComponent implements OnInit {
       });
       this.resetForm();
       this.submitted=false;
-      this.flag=true;
+      this.flag=false;
+      this.success=true;
       }
   
     resetForm(){

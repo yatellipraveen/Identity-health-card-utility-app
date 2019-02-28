@@ -80,8 +80,11 @@
             <span style="padding-right:1em;"></span>
             <button (click)="onClick()" class="btn btn-primary" >Back</button>
             <div *ngIf="flag">
-              <app-submit></app-submit>
+              <p>Uploading Please Wait....</p>
             </div>
+            <div *ngIf="success">
+                <p>Submitted Succesfully</p>
+              </div>
           </div>
         </form>
     </div>

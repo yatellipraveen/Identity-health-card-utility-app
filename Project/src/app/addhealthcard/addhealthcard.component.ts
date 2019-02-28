@@ -14,8 +14,6 @@ export class AddhealthcardComponent implements OnInit {
   submitted = false;
   flag= false;
   registerForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
     policyno :new FormControl ('', Validators.required),
     uhid: new FormControl ('', Validators.required),
     gender: new FormControl ('', Validators.required),
@@ -75,8 +73,6 @@ export class AddhealthcardComponent implements OnInit {
   }
     resetForm(){
       this.registerForm.setValue({
-      firstName: '',
-      lastName:'',
     policyno : '',
     uhid: '',
     gender: '',
