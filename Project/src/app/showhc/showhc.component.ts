@@ -39,6 +39,7 @@ export class ShowhcComponent implements OnInit {
   validfrom:string;
   validupto:string;
   age:number;
+  email:string;
   articlesCollection: AngularFirestoreCollection<Data>;
   articles: Observable<Data[]>;
   article: any;
@@ -53,6 +54,7 @@ export class ShowhcComponent implements OnInit {
     this.articles = this.articlesCollection.valueChanges();
     this.articlesCollection.doc(auth.email).ref.get().then((doc) => {
     this.article = doc.data();
+    console.log(this.article)
     //var dob = '1980/08/10';
     var fields= this.article.dob.split('/');
       var year = Number(fields[2]);

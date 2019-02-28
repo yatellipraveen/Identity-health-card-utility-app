@@ -54,8 +54,7 @@ export class FormsComponent implements OnInit {
       if(this.form.invalid){
         return;
       }
-      else
-        this.router.navigate(['admin']);
+      
   
     //   console.log(this.form.value)
     //   let data= this.form.value;
@@ -70,8 +69,8 @@ export class FormsComponent implements OnInit {
       let data = this.form.value;
       this.firestore.collection('associate').doc(this.form.value.email).set(data);
 
-      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
-     // firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
+     // firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
+      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
          
       });
      
