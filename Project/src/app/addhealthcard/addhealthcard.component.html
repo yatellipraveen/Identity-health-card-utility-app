@@ -39,7 +39,7 @@
                     <label>Date of Birth</label>
                     <input type="text"  formControlName="dob" placeholder="DD/MM/YYYY" pattern="^(0[1-9]|1[0-9]|2[0-9]|3[0,1])([/+-])(0[1-9]|1[0-2])([/+-])(19|20)[0-9]{2}$" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
                     <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
-                        <div *ngIf="f.dob.errors.required">DOB is required</div>
+                        <div *ngIf="f.dob.errors.required">This field is required</div>
                         <div *ngIf="f.dob.errors.pattern">Must be in required format</div>
                     </div>
                 </div>

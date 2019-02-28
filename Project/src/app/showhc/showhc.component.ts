@@ -7,16 +7,13 @@ import * as firebase from 'firebase';
 export interface Data {
   firstName: string,
   lastName: string,
-  cardno:string,
+  //cardno:string,
   dob:string,
   eno:string,
-  email:string,
+  //email:string,
   gender:string,
   policyno:string,
   uhid:string,
-  uid:string;
-  validfrom:string,
-  validupto:string,
   //age:number
 }
 
@@ -29,15 +26,11 @@ export class ShowhcComponent implements OnInit {
   user : Observable <firebase.User>;
   
   name:string;
-  cardno:string;
   dob:string;
   eno:string;
   gender:string;
   policyno:string;
   uhid:string;
-  uid:string;
-  validfrom:string;
-  validupto:string;
   age:number;
   email:string;
   articlesCollection: AngularFirestoreCollection<Data>;

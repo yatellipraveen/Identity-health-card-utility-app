@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AngularFireDatabase } from "angularfire2/database";
 import * as  firebase   from  'firebase';
 import { async } from 'q';
+import { ToastrService} from 'ngx-toastr';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Tree } from '@angular/router/src/utils/tree';
 
@@ -19,6 +20,7 @@ export class FormsComponent implements OnInit {
   submitted=false;
   flag= false;
   image:File;
+  file:File;
   upload=false;
   
   form = new FormGroup({
@@ -27,7 +29,7 @@ export class FormsComponent implements OnInit {
     bgroup: new FormControl('', Validators.required),
     role: new FormControl('', Validators.required),
     eid: new FormControl('', Validators.required),
-    email: new FormControl('',Validators.required),
+    email: new FormControl('',[Validators.required,Validators.email]),
     image: new FormControl(this.image,Validators.required),
     imagesrc:new FormControl('')
    });
@@ -40,19 +42,20 @@ export class FormsComponent implements OnInit {
       private firestore: AngularFirestore,
       public af : AngularFireAuth,
       public af1 :AngularFireAuth,
+      private toastr : ToastrService,
       private router: Router,
        private db: AngularFireDatabase ) { 
-
        }
     ngOnInit() {
     }
     onClick(){
       this.location.back();
     }
-    onSubmit(){
+    async onSubmit(){
       this.submitted=true;
       if(this.form.invalid){
         return;
+ 
       }
       
   
@@ -66,22 +69,38 @@ export class FormsComponent implements OnInit {
     //   this.submitted=false;
     //   this.flag=true;
 
-      let data = this.form.value;
-      this.firestore.collection('associate').doc(this.form.value.email).set(data);
+    //   let data = this.form.value;
+    //   this.firestore.collection('associate').doc(this.form.value.email).set(data);
 
-     // firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
-      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
+    //  // firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
+    //   firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
          
+
+    //   } 
+      const metaData= {'contentType': this.file.type};
+      var string1 = '/photos/';
+      var string2 = this.file.name;
+      var path = string1 + string2;
+        console.log("jdgkjjfkjfd",path);
+      var storageRef :  firebase.storage.Reference=  firebase.storage().ref(path);
+      await storageRef.put(this.file,metaData);
+      await storageRef.getDownloadURL().then(downloadURL => {
+         const imageUrl = downloadURL;
+        console.log('URL:' + imageUrl); 
+        this.form.patchValue({ 
+          imagesrc: imageUrl
+        });
       });
-     
-      if(this.upload){
-        this.resetForm();
-        this.submitted=false;
-        this.flag=true;
-        this.upload=false;
-        
+      let data =await this.form.value;
+      console.log("Uploading file ......",this.file.name);
+      this.firestore.collection('associate').doc(this.form.value.email).set(data);
+      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
+      });
+      this.resetForm();
+      this.submitted=false;
+      this.flag=true;
       }
-    }
+  
     resetForm(){
       this.form.setValue({
         firstName: '',
@@ -94,22 +113,7 @@ export class FormsComponent implements OnInit {
         imagesrc:''
       });
     }
-    async processFile(event :any ){
-      const file: File= event.target.files[0];
-      const metaData= {'contentType': file.type};
-      var string1 = '/photos/';
-      var string2 = file.name;
-      var path = string1 + string2;
-      var storageRef :  firebase.storage.Reference=  firebase.storage().ref(path);
-      await storageRef.put(file,metaData);
-      storageRef.getDownloadURL().then(downloadURL => {
-         const imageUrl = downloadURL;
-        console.log('URL:' + imageUrl);
-        this.form.patchValue({ 
-          imagesrc: imageUrl
-        });
-      });
-      this.upload=true;
-      console.log("Uploading file ......",file.name);
+    processFile(event :any ){
+       this.file =  event.target.files[0]; 
     }
 }

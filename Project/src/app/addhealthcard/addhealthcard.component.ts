@@ -60,7 +60,7 @@ export class AddhealthcardComponent implements OnInit {
       //let data= this.registerForm.value;
       //this.firestore.collection('employeehc').add(data);
       
-      console.log(this.registerForm.value)
+      //console.log(this.registerForm.value)
       let data= this.registerForm.value;
       this.firestore.collection('employeehc').doc(this.registerForm.value.email).set(data);
         this.resetForm();

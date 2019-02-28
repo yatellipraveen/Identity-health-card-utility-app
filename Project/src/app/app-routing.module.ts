@@ -27,33 +27,7 @@ const routes: Routes = [
   { path: 'admin/addhc', component: AddhealthcardComponent},
   {path: 'associate/showid', component: ShowidComponent},
   {path: 'login', component:LoginComponent},
-  {path: '**', redirectTo:''}
-
-
-
-//const routes: Routes = [
- // {path: '', component:LoginComponent},
- // {path:'admin', component:AdminComponent},
-//  {path:'admin/forms', component: FormsComponent},
-//  {path:'admin/addhc', component: AddhealthcardComponent},
-//  {path:'associate', component: AssociateComponent},
- // {path:'associate/showid',component:ShowidComponent},
-//  {path:'associate/showhc',component:ShowhcComponent},
- //{path : 'security', component: SecurityComponent},
-  
-  //not required
-  // {path :'admin', component: AdminComponent},
-  // {path:'admin/forms',component: FormsComponent},
-  // {path : 'admin/associates', component: AssociateComponent},
-  // {path : 'admin/security', component: SecurityComponent},
-  // {path : 'associate', component: AssociateComponent},
-  // {path: 'associate/showhc', component: ShowhcComponent},
-  // {path : 'security', component: SecurityComponent},
-  // { path: 'admin/addhc', component: AddhealthcardComponent},
-  // {path: 'associate/showid', component: ShowidComponent},
-  // {path: 'admin/forms/submit',component: SubmitComponent},
- 
-  // {path: 'login', component:LoginComponent},
+  {path: '**', redirectTo:''},
 ];
 
 @NgModule({

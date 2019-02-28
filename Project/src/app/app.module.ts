@@ -24,8 +24,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LoginComponent } from './login/login.component';
- 
+import { LoginComponent } from './login/login.component'; 
 
 @NgModule({
   declarations: [
@@ -41,7 +40,7 @@ import { LoginComponent } from './login/login.component';
     SignupComponent,
     SubmitComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +54,9 @@ import { LoginComponent } from './login/login.component';
     AngularFireDatabaseModule, 
     BrowserAnimationsModule, 
     FlexLayoutModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      toastClass: 'toast toast-bootstrap-compatibility-fix'
+    }),
     AngularFireAuthModule
   ],
   providers: [],

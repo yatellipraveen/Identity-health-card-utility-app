@@ -3,5 +3,22 @@
 <div class="container">
 
     <img src="../assets/undermaintenance.png" class="img-responsive" alt="logo" width="100%" height="30%" style="margin-top: 20%;"> 
-    
+    <form name="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                    <label for="email">Email Id</label>
+                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors}">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">Email is required</div>
+                      <div *ngIf="f.email.errors.pattern">Enter a valid Email</div>
+                    </div>
+                </div>  
+                <div class="form-group">
+                        <button class="btn btn-primary" >Submit</button>
+                        <span style="padding-right:1em;"></span>
+                        <button (click)="onClick()" class="btn btn-primary" >Back</button>
+                        <div *ngIf="flag">
+                            <app-submit></app-submit>
+                        </div>
+                    </div>
+                  </form>
 </div>
