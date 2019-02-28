@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted=false;
   flag=false;
+  errormsg="";
   constructor(private formBuilder: FormBuilder, private firestore : AngularFirestore, public af: AngularFireAuth,private router: Router) {
       this.af.authState.subscribe(
         (auth) =>{
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  Login() {
+  async Login() {
     this.submitted = true;
 
     if (this.loginForm.invalid) {
@@ -59,8 +60,8 @@ export class LoginComponent implements OnInit {
     }
     this.af.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password).catch(error=>{
       if(error){
-      var er=error;
-      this.flag=true;
+        this.errormsg=error.message;  
+        this.flag=true;
       }
 
     });
