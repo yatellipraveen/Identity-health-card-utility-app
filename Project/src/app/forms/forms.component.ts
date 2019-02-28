@@ -9,6 +9,7 @@ import { async } from 'q';
 import { ToastrService} from 'ngx-toastr';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Tree } from '@angular/router/src/utils/tree';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 
 @Component({
@@ -55,8 +56,9 @@ export class FormsComponent implements OnInit {
       this.submitted=true;
       if(this.form.invalid){
         return;
- 
       }
+      else
+      this.router.navigate(['admin']);
       
   
     //   console.log(this.form.value)
