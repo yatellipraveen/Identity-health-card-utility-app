@@ -11,6 +11,7 @@ import {ShowidComponent} from './showid/showid.component';
 import {SignupComponent} from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import {SubmitComponent} from './submit/submit.component';
+import { IssueComponent } from './issue/issue.component'; 
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'admin/addhc', component: AddhealthcardComponent},
   {path: 'associate/showid', component: ShowidComponent},
   {path: 'login', component:LoginComponent},
-  {path: '**', redirectTo:''},
+ // {path: '**', redirectTo:''},
+  {path: 'security/issue', component:IssueComponent},
 ];
 
 @NgModule({

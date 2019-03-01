@@ -64,6 +64,7 @@
             <div *ngIf="f.email.errors.required">Email is required</div>
             <div *ngIf="f.email.errors.pattern">Enter a valid Email</div>
         </div>
+      </div>
         <div class="form-group">
           <label >Upload an Image</label>
             <input #imageInput
@@ -74,14 +75,17 @@
               <div>Picture not uploaded</div>
             </div>       
         </div>
-        </div>
-          <div class="form-group">
+          
+        <div class="form-group">
             <button class="btn btn-primary" >Submit</button>
             <span style="padding-right:1em;"></span>
             <button (click)="onClick()" class="btn btn-primary" >Back</button>
             <div *ngIf="flag">
-              <app-submit></app-submit>
+              <p>Uploading Please Wait....</p>
             </div>
+            <div *ngIf="success">
+                <p>Submitted Succesfully</p>
+              </div>
           </div>
         </form>
     </div>

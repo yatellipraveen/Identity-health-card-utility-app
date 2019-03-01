@@ -16,9 +16,9 @@ export class AddhealthcardComponent implements OnInit {
   registerForm = new FormGroup({
     policyno :new FormControl ('', Validators.required),
     uhid: new FormControl ('', Validators.required),
-    //gender: new FormControl ('', Validators.required),
-    email: new FormControl('',Validators.required),
-    //eno: new FormControl ('', Validators.required),
+    gender: new FormControl ('', Validators.required),
+    //email: new FormControl('',Validators.required),
+    eno: new FormControl ('', Validators.required),
     dob: new FormControl ('', Validators.required),
     //cardno: new FormControl ('', Validators.required),
 
