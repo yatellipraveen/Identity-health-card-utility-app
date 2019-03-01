@@ -5,18 +5,16 @@ import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 
 export interface Data {
+
   firstName:string,
   lastName:string,
   cardno:string,
   dob:string,
   eno:string,
-  email:string,
+  //email:string,
   gender:string,
   policyno:string,
   uhid:string,
-  uid:string;
-  validfrom:string,
-  validupto:string,
   //age:number
 }
 
@@ -29,16 +27,13 @@ export class ShowhcComponent implements OnInit {
   user : Observable <firebase.User>;
   
   name:string;
-  cardno:string;
   dob:string;
   eno:string;
   gender:string;
   policyno:string;
   uhid:string;
-  uid:string;
-  validfrom:string;
-  validupto:string;
   age:number;
+  email:string;
   articlesCollection: AngularFirestoreCollection<Data>;
   articlesCollection1:AngularFirestoreCollection<Data>;
   articles: Observable<Data[]>;
@@ -58,6 +53,8 @@ export class ShowhcComponent implements OnInit {
     this.articles1 = this.articlesCollection1.valueChanges();
     this.articlesCollection.doc(auth.email).ref.get().then((doc) => {
     this.article = doc.data();
+    console.log(this.article)
+    //var dob = '1980/08/10';
     var fields= this.article.dob.split('/');
       var year = Number(fields[2]);
       var month = Number(fields[1]);

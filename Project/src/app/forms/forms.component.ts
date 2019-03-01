@@ -21,7 +21,7 @@ export class FormsComponent implements OnInit {
   flag= false;
   image:File;
   file:File;
-  success=false;
+  upload=false;
   
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -55,8 +55,28 @@ export class FormsComponent implements OnInit {
       this.submitted=true;
       if(this.form.invalid){
         return;
-      } 
-      this.flag=true;
+ 
+      }
+      
+  
+    //   console.log(this.form.value)
+    //   let data= this.form.value;
+    //   this.firestore.collection('employeeid').add(data);
+      
+    //   //data = this.form.value;
+    //  // this.firestore.collection('associate').add(data);
+    //   this.resetForm();
+    //   this.submitted=false;
+    //   this.flag=true;
+
+    //   let data = this.form.value;
+    //   this.firestore.collection('associate').doc(this.form.value.email).set(data);
+
+    //  // firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
+    //   firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
+         
+
+    //   } 
       const metaData= {'contentType': this.file.type};
       var string1 = '/photos/';
       var string2 = this.file.name;
@@ -78,8 +98,7 @@ export class FormsComponent implements OnInit {
       });
       this.resetForm();
       this.submitted=false;
-      this.flag=false;
-      this.success=true;
+      this.flag=true;
       }
   
     resetForm(){

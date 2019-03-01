@@ -2,6 +2,7 @@
 <div class="container">
 <form [formGroup]="loginForm" (ngSubmit)="Login()">
   <div class="form-group">
+
       <label for="username">Username</label>
       <input type="text" formControlName="username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.username.errors) || flag }" />
       <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
