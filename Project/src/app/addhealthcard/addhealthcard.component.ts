@@ -14,17 +14,14 @@ export class AddhealthcardComponent implements OnInit {
   submitted = false;
   flag= false;
   registerForm = new FormGroup({
-    //firstName: new FormControl('', Validators.required),
-    //lastName: new FormControl('', Validators.required),
+
     policyno :new FormControl ('', Validators.required),
     uhid: new FormControl ('', Validators.required),
     gender: new FormControl ('', Validators.required),
-    email: new FormControl('',Validators.required),
-    //eno: new FormControl ('', Validators.required),
+    //email: new FormControl('',Validators.required),
+    eno: new FormControl ('', Validators.required),
     dob: new FormControl ('', Validators.required),
     //cardno: new FormControl ('', Validators.required),
-    validfrom: new FormControl ('', Validators.required),
-    validupto: new FormControl ('', Validators.required),
    });
    get f(){
     return this.registerForm.controls;
@@ -63,7 +60,7 @@ export class AddhealthcardComponent implements OnInit {
       //let data= this.registerForm.value;
       //this.firestore.collection('employeehc').add(data);
       
-      console.log(this.registerForm.value)
+      //console.log(this.registerForm.value)
       let data= this.registerForm.value;
       this.firestore.collection('employeehc').doc(this.registerForm.value.email).set(data);
         this.resetForm();
@@ -79,13 +76,14 @@ export class AddhealthcardComponent implements OnInit {
       //lastName:'',
     policyno : '',
     uhid: '',
-    gender: '',
+    //gender: '',
     email:'',
     //eno: '',
     dob: '',
     //cardno: '',
-    validfrom:'',
-    validupto:''
+
+    //validfrom:'',
+    //validupto:''
     });
   }
 }

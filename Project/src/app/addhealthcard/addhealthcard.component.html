@@ -9,6 +9,7 @@
                   <img style="height:90px; width:50%;" src="https://www.greatplacetowork.in/wp-content/uploads/2018/07/Great-Mid-Size-Workplaces-small.jpg" class="img-fluid" >
               </div> -->
               <h3 >Health card Details</h3>
+<<<<<<< HEAD
                <form name="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
               <!--    <div class="form-group">
                       <label>First Name</label>
@@ -26,6 +27,26 @@
                           <div *ngIf="f.lastName.errors.pattern">Last Name should contain only alphabets</div>
                       </div>
                   </div> -->
+=======
+              <form name="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <!-- <div class="form-group">
+                            <label for="email">Email Id</label>
+                            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control" formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors}">
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                              <div *ngIf="f.email.errors.required">Email is required</div>
+                              <div *ngIf="f.email.errors.pattern">Enter a valid Email</div>
+                            </div>
+                        </div>   -->
+                
+                <div class="form-group">
+                    <label>Employee ID</label>
+                    <input type="text" formControlName="eno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.eno.errors }" />
+                    <div *ngIf="submitted && f.eno.errors" class="invalid-feedback">
+                        <div *ngIf="f.eno.errors.required">Emp id is required</div>
+                    </div>
+                </div>
+                  
+>>>>>>> bb6d126f2594bb714979afba9a4466eb8b9415a5
                   <div class="form-group">
                     <label>Policy Number</label>
                     <input type="text" formControlName="policyno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyno.errors }" />
@@ -40,6 +61,7 @@
                         <div *ngIf="f.uhid.errors.required">UHID is required</div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <!-- <div class="form-group">
                     <label>Employee ID</label>
                     <input type="text" formControlName="eno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.eno.errors }" />
@@ -47,6 +69,9 @@
                         <div *ngIf="f.eno.errors.required">Emp id is required</div>
                     </div>
                 </div> -->
+=======
+            
+>>>>>>> bb6d126f2594bb714979afba9a4466eb8b9415a5
                 <div class="form-group">
                     <label>Gender</label>
                       <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="browser-default custom-select">
@@ -59,6 +84,7 @@
                     </div>
                 </div>
                 <div class="form-group">
+<<<<<<< HEAD
                     <label>Date of Birth</label>
                     <input type="text"  formControlName="dob" placeholder="DD/MM/YYYY" pattern="^(0[1-9]|1[0-9]|2[0-9]|3[0,1])([/+-])(0[1-9]|1[0-2])([/+-])(19|20)[0-9]{2}$" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
                     <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
@@ -100,6 +126,16 @@
                         <div *ngIf="f.validupto.errors.pattern">Enter a valid date</div>
                     </div>
                 </div>
+=======
+                    <label>Date Of Birth</label>
+                    <input type="text"  formControlName="dob" placeholder="DD/MM/YYYY" pattern="^(0[1-9]|1[0-9]|2[0-9]|3[0,1])([/+-])(0[1-9]|1[0-2])([/+-])(19|20)[0-9]{2}$" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+                    <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                        <div *ngIf="f.dob.errors.required">This field is required</div>
+                        <div *ngIf="f.dob.errors.pattern">Must be in required format</div>
+                    </div>
+                </div>
+
+>>>>>>> bb6d126f2594bb714979afba9a4466eb8b9415a5
                 <div class="form-group">
                     <button class="btn btn-primary" >Submit</button>
                     <span style="padding-right:1em;"></span>
@@ -109,8 +145,7 @@
                     </div>
                 </div>
               </form>
-              <!-- {{registerForm.value| json}} -->
-          </div>
+            </div>
       </div>
   </div>
 </div>

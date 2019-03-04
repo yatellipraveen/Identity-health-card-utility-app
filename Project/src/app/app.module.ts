@@ -25,7 +25,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './login/login.component';
- 
+import { IssueComponent } from './issue/issue.component'; 
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { LoginComponent } from './login/login.component';
     SignupComponent,
     SubmitComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    IssueComponent,
   ],
   imports: [
     BrowserModule,
