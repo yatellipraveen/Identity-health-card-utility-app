@@ -38,7 +38,7 @@ export class ShowidComponent implements OnInit {
         this.user=this.af.authState;
         this.articlesCollection = this.firestore.collection('associate');
         this.articles = this.articlesCollection.valueChanges();
-        this.articlesCollection.doc(auth.email).ref.get().then((doc) => {
+        this.articlesCollection.doc(auth.uid).ref.get().then((doc) => {
         this.article = doc.data();
       });
     }
