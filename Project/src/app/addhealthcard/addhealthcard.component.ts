@@ -62,7 +62,7 @@ export class AddhealthcardComponent implements OnInit {
       
       //console.log(this.registerForm.value)
       let data= this.registerForm.value;
-      this.firestore.collection('employeehc').doc(this.registerForm.value.email).set(data);
+      this.firestore.collection('employeehc').doc(this.registerForm.value.eno).set(data);
         this.resetForm();
         this.submitted=false;
         this.flag=true;
@@ -78,12 +78,13 @@ export class AddhealthcardComponent implements OnInit {
     uhid: '',
     //gender: '',
     email:'',
-    //eno: '',
+    eno: '',
     dob: '',
     //cardno: '',
 
     //validfrom:'',
     //validupto:''
+
     });
   }
 }

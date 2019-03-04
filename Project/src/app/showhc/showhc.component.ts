@@ -77,9 +77,7 @@ export class ShowhcComponent implements OnInit {
     this.articlesCollection1.doc(auth.email).ref.get().then((doc) => {
     this.article1 = doc.data();
     });
-      this.articlesCollection1.doc(auth.email).ref.get().then((doc) => {
-        this.article1 = doc.data();
-      });  
+    
     }
   });
 
