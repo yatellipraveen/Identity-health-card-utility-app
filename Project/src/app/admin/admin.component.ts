@@ -9,9 +9,7 @@ import  { Location } from '@angular/common';
 export class AdminComponent implements OnInit {
 
   constructor(private location: Location) { }
-  onClick(){
-    this.location.back();
-  }
+  
   ngOnInit() {
   }
 }

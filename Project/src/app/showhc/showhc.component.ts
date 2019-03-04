@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 
 export interface Data {
-  firstName: string,
-  lastName: string,
-  cardno:string,
+  //firstName: string,
+  //lastName: string,
+  //cardno:string,
   dob:string,
-  eno:string,
+  //eno:string,
   email:string,
   gender:string,
   policyno:string,
@@ -18,6 +18,11 @@ export interface Data {
   validfrom:string,
   validupto:string,
   //age:number
+}
+export interface Data1{
+  firstName:string;
+  lastName:string;
+  eid:string;
 }
 
 @Component({
@@ -42,6 +47,9 @@ export class ShowhcComponent implements OnInit {
   articlesCollection: AngularFirestoreCollection<Data>;
   articles: Observable<Data[]>;
   article: any;
+  articlesCollection1: AngularFirestoreCollection<Data1>;
+  articles1: Observable<Data1[]>;
+  article1: any;
 
   constructor(private firestore: AngularFirestore, public af : AngularFireAuth) {
 
@@ -63,7 +71,14 @@ export class ShowhcComponent implements OnInit {
       if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
       this.age--;
        }
+      }).catch(error=>{
+        console.log(""+error);
       });
+      this.articlesCollection1 = this.firestore.collection('associate');
+    this.articles1 = this.articlesCollection1.valueChanges();
+    this.articlesCollection1.doc(auth.email).ref.get().then((doc) => {
+    this.article1 = doc.data();
+    });
     }
   });
 
