@@ -26,6 +26,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './login/login.component';
 import { IssueComponent } from './issue/issue.component'; 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { IssueComponent } from './issue/issue.component';
     ToastrModule.forRoot({
       toastClass: 'toast toast-bootstrap-compatibility-fix'
     }),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ import * as  firebase   from  'firebase';
 import { async } from 'q';
 import { ToastrService} from 'ngx-toastr';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Tree } from '@angular/router/src/utils/tree';
+import { HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -22,6 +22,7 @@ export class FormsComponent implements OnInit {
   image:File;
   file:File;
   upload=false;
+  url="https://us-central1-attendance-19db4.cloudfunctions.net/CreateEmpl";
   
   form = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -44,7 +45,8 @@ export class FormsComponent implements OnInit {
       public af1 :AngularFireAuth,
       private toastr : ToastrService,
       private router: Router,
-       private db: AngularFireDatabase ) { 
+       private db: AngularFireDatabase,
+       private http: HttpClient ) { 
        }
     ngOnInit() {
     }
@@ -81,7 +83,7 @@ export class FormsComponent implements OnInit {
       var string1 = '/photos/';
       var string2 = this.file.name;
       var path = string1 + string2;
-        console.log("jdgkjjfkjfd",path);
+       // console.log("jdgkjjfkjfd",path);
       var storageRef :  firebase.storage.Reference=  firebase.storage().ref(path);
       await storageRef.put(this.file,metaData);
       await storageRef.getDownloadURL().then(downloadURL => {
@@ -93,8 +95,12 @@ export class FormsComponent implements OnInit {
       });
       let data =await this.form.value;
       console.log("Uploading file ......",this.file.name);
-      this.firestore.collection('associate').doc(this.form.value.email).set(data);
-      firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
+      this.firestore.collection('associate').doc(this.form.value.eid).set(data);
+      var obj={
+        "uid":this.form.value.eid,
+        "email": this.form.value.email
+      }
+      this.http.post(this.url,JSON.stringify(obj)).subscribe(res =>{
       });
       this.resetForm();
       this.submitted=false;
@@ -116,4 +122,19 @@ export class FormsComponent implements OnInit {
     processFile(event :any ){
        this.file =  event.target.files[0]; 
     }
+
+    // name="praveen";
+    // data={
+    //   "name":this.name,
+    //   "eid":"3214",
+    // };
+    
+
+    // params=new HttpParams().set('name','praveen');
+   
+    // httpcall(){
+    //   console.log("Http Request called");
+    //   this.http.post(this.url,JSON.stringify(this.data)).subscribe(res =>{
+    //   });
+    // }
 }
