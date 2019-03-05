@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from "angularfire2/database";
 import * as  firebase   from  'firebase';
 import { async } from 'q';
 import { ToastrService} from 'ngx-toastr';
@@ -43,8 +42,8 @@ export class FormsComponent implements OnInit {
       public af : AngularFireAuth,
       public af1 :AngularFireAuth,
       private toastr : ToastrService,
-      private router: Router,
-       private db: AngularFireDatabase ) { 
+      private router: Router
+        ) { 
        }
     ngOnInit() {
     }
