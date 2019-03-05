@@ -14,6 +14,7 @@ import {SubmitComponent} from './submit/submit.component';
 import { IssueComponent } from './issue/issue.component'; 
 
 
+
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'signup', component:SignupComponent},
