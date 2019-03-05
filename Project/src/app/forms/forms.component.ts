@@ -123,18 +123,4 @@ export class FormsComponent implements OnInit {
        this.file =  event.target.files[0]; 
     }
 
-    // name="praveen";
-    // data={
-    //   "name":this.name,
-    //   "eid":"3214",
-    // };
-    
-
-    // params=new HttpParams().set('name','praveen');
-   
-    // httpcall(){
-    //   console.log("Http Request called");
-    //   this.http.post(this.url,JSON.stringify(this.data)).subscribe(res =>{
-    //   });
-    // }
 }

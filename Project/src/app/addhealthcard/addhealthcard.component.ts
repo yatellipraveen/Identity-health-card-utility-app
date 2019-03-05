@@ -29,18 +29,7 @@ export class AddhealthcardComponent implements OnInit {
   constructor(private router: Router, private location: Location, private firestore: AngularFirestore) { }
 
   ngOnInit() {
-      // this.registerForm = this.formBuilder.group({
-      //     firstName: new FormControl ('', Validators.required),
-      //     lastName: new FormControl ('', Validators.required),
-      //     policyno : new FormControl ('', Validators.required),
-      //     uhid:new FormControl ('', Validators.required),
-      //     gender:new FormControl ('', Validators.required),
-      //     eno: new FormControl ('', Validators.required),
-      //     age:new FormControl ('', Validators.required),
-      //     cardno: new FormControl ('', Validators.required),
-      //     validfrom: ['',Validators.required],
-      //     validupto: ['',Validators.required]
-      // });
+
   }
   onClick(){
     this.location.back();
@@ -55,20 +44,11 @@ export class AddhealthcardComponent implements OnInit {
           return;
       }      
 
-      console.log("sjfhjdgfkd");
-      console.log(this.registerForm.value);
-      //let data= this.registerForm.value;
-      //this.firestore.collection('employeehc').add(data);
-      
-      //console.log(this.registerForm.value)
       let data= this.registerForm.value;
       this.firestore.collection('employeehc').doc(this.registerForm.value.eno).set(data);
         this.resetForm();
         this.submitted=false;
         this.flag=true;
-     //this.toastr.success('Successfully submitted', 'EMP REGISTER');
-      //this.router.navigate(['welcome']);
-      // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
     resetForm(){
       this.registerForm.setValue({
