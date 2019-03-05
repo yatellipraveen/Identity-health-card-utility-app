@@ -5,21 +5,6 @@
 export const environment = {
   production: false,
   firebaseConfig :{
-
-    // apiKey: "AIzaSyCQmnQ8bhpTGOkcXoioEeUNQ4e5YsEZMZo",
-    // authDomain: "attendence-40212.firebaseapp.com",
-    // databaseURL: "https://attendence-40212.firebaseio.com",
-    // projectId: "attendence-40212",
-    // storageBucket: "attendence-40212.appspot.com",
-    // messagingSenderId: "1082050218050"
-    
-    // apiKey: "AIzaSyCie-9AiWHDcFazavhyG7JKLx267Q2za8A",
-    // authDomain: "attendance-93e1b.firebaseapp.com",
-    // databaseURL: "https://attendance-93e1b.firebaseio.com",
-    // projectId: "attendance-93e1b",
-    // storageBucket: "attendance-93e1b.appspot.com",
-    // messagingSenderId: "450807973782"
-
     //Praveen's firebase
     apiKey: "AIzaSyDDO4-FgQruX9GMUdGfhkhgDkun-k0u6T8",
     authDomain: "attendance-19db4.firebaseapp.com",
@@ -27,7 +12,6 @@ export const environment = {
     projectId: "attendance-19db4",
     storageBucket: "attendance-19db4.appspot.com",
     messagingSenderId: "42218411122"
-
   }
 };
 

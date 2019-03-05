@@ -34,6 +34,8 @@ export class ShowhcComponent implements OnInit {
   uhid:string;
   age:number;
   email:string;
+  validfrom:string;
+  validupto:string;
   articlesCollection: AngularFirestoreCollection<Data>;
   articlesCollection1:AngularFirestoreCollection<Data>;
   articles: Observable<Data[]>;
