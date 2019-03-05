@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig :{
-     apiKey: "AIzaSyCie-9AiWHDcFazavhyG7JKLx267Q2za8A",
-     authDomain: "attendance-93e1b.firebaseapp.com",
-     databaseURL: "https://attendance-93e1b.firebaseio.com",
-     projectId: "attendance-93e1b",
-     storageBucket: "attendance-93e1b.appspot.com",
-     messagingSenderId: "450807973782"
+    //Praveen's firebase
+    apiKey: "AIzaSyDDO4-FgQruX9GMUdGfhkhgDkun-k0u6T8",
+    authDomain: "attendance-19db4.firebaseapp.com",
+    databaseURL: "https://attendance-19db4.firebaseio.com",
+    projectId: "attendance-19db4",
+    storageBucket: "attendance-19db4.appspot.com",
+    messagingSenderId: "42218411122"
   }
 };
 

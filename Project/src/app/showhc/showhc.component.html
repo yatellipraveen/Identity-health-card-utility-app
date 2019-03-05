@@ -13,7 +13,7 @@
           <div class="row">
               <label class="left">NAME</label>
               <span style="margin-left:18%">: {{article1?.firstName+" "+article1?.lastName}}</span>
-            </div>
+          </div>
           <div class="row">
             <label class="left">Policy No</label>
             <span style="margin-left:10.5%">: {{article?.policyno}}</span>
@@ -29,12 +29,16 @@
           <div class="row">
               <label class="left">Gender</label>
               <span style="margin-left:15%">: {{article?.gender}}</span>
-            </div>
-            <div class="row">
-                <label class="left">Age</label>
-                <span style="margin-left:23%">: {{age}}</span>
-              </div>
-      </div>
+          </div>
+          <div class="row">
+            <label class="left">Age</label>
+            <span style="margin-left:23%">: {{age}}</span>
+          </div>
+          <div class="row">
+            <label class="left">Validity</label>
+            <span style="margin-left:7%">: {{article?.validfrom+"-"+article?.validupto}}</span>
+          </div>   
+     </div>
       <!-- <div class="row" style="margin-top:5%; padding-left:2.5%">
           <div class="col-12" style="background-color:orange">
             <span class="text-center">

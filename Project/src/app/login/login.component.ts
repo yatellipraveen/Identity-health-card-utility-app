@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
           if(auth!=null){
             this.flag=false;
             this.user=af.authState;
-            var cityRef = firestore.collection('associate').doc(auth.email);
+            var cityRef = firestore.collection('associate').doc(auth.uid);
             var getDoc = cityRef.ref.get()
               .then(doc => {
                 if (!doc.exists) {

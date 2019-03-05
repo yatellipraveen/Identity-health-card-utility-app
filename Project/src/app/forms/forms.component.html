@@ -23,7 +23,7 @@
           </div>
           <div class="form-group">
               <label>BloodGroup</label>
-              <select formControlName="bgroup" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bgroup.errors }" class="browser-default custom-select">
+              <select formControlName="bgroup" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.bgroup.errors }" class="browser-default custom-select">
                 <!-- <option selected>Open this select menu</option> -->
                 <option value="o+ve">O+VE</option>
                 <option value="o-ve">O-VE</option>
@@ -40,9 +40,10 @@
             </div>
           <div class="form-group">
             <label for="eid">Associate Id</label>
-            <input type="text" class="form-control" formControlName="eid" [ngClass]="{'is-invalid': submitted && f.eid.errors}">
-            <div   class="invalid-feedback">
-              <div>AssociateId is required</div>
+            <input type="text" class="form-control" formControlName="eid" pattern="^[A-Za-z0-9]+$" [ngClass]="{'is-invalid': submitted && f.eid.errors}">
+            <div  *ngIf="submitted && f.eid.errors"  class="invalid-feedback">
+                <div *ngIf="f.eid.errors.required">AssociateId is required</div>
+                <div *ngIf="f.eid.errors.pattern">Not a Valid Associate Id</div>
             </div>
           </div>
           <div class="form-group">
@@ -80,10 +81,10 @@
             <button class="btn btn-primary" >Submit</button>
             <span style="padding-right:1em;"></span>
             <button (click)="onClick()" class="btn btn-primary" >Back</button>
-            <div *ngIf="flag">
-              <p>Uploading Please Wait....</p>
+            <div *ngIf="flag" class="Submission">
+              <p>Submitting Please Wait....</p>
             </div>
-            <div *ngIf="success">
+            <div *ngIf="success" class="Submission">
                 <p>Submitted Succesfully </p>
             </div> 
           </div>
@@ -91,3 +92,6 @@
     </div>
   </div>
 </div>
+
+
+
