@@ -1,6 +1,5 @@
 <app-menu></app-menu>
 
-<div class="jumbotron" style="background-color:white;">
   <div class="container">
       <div class="row">
           <div class="col-md-6 offset-md-3">
@@ -9,9 +8,12 @@
                 
                 <div class="form-group">
                     <label>Employee ID</label>
-                    <input type="text" formControlName="eno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.eno.errors }" />
+                    <input type="text" formControlName="eno" class="form-control" [ngClass]="{ 'is-invalid': (submitted && f.eno.errors) || doc }" />
                     <div *ngIf="submitted && f.eno.errors" class="invalid-feedback">
-                        <div *ngIf="f.eno.errors.required">Employee id is required</div>
+                        <div *ngIf="f.eno.errors.required">Associate id is required</div>
+                    </div>
+                    <div *ngIf="doc" class="invalid-feedback">
+                        <div *ngIf="doc">This Employee Doesnot Exist.</div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -26,9 +28,11 @@
                 <div class="form-group">
                     <button class="btn btn-primary" >Submit</button>
                     <!-- <span style="padding-right:1em;"></span> -->
+                    <div *ngIf="flag" class="Submission">
+                        <p>Updated Succesfully</p>
+                    </div>
                 </div>
               </form>
             </div>
       </div>
   </div>
-</div>

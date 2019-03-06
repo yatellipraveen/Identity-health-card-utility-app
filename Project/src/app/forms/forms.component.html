@@ -25,14 +25,14 @@
               <label>BloodGroup</label>
               <select formControlName="bgroup" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.bgroup.errors }" class="browser-default custom-select">
                 <!-- <option selected>Open this select menu</option> -->
-                <option value="o+ve">O+VE</option>
-                <option value="o-ve">O-VE</option>
-                <option value="a+ve">A+VE</option>
-                <option value="a-ve">A-VE</option>
-                <option value="b+ve">B+VE</option>
-                <option value="b-ve">B-VE</option>
-                <option value="ab+ve">AB+VE</option>
-                <option value="ab-ve">AB-VE</option>
+                <option value="O+">O+VE</option>
+                <option value="O-">O-VE</option>
+                <option value="A+">A+VE</option>
+                <option value="A-">A-VE</option>
+                <option value="B+">B+VE</option>
+                <option value="B-">B-VE</option>
+                <option value="AB+">AB+VE</option>
+                <option value="AB-">AB-VE</option>
               </select>
               <div *ngIf="submitted && f.bgroup.errors" class="invalid-feedback">
                 <div *ngIf="f.bgroup.errors.required">Blood Group is required</div>
@@ -64,8 +64,8 @@
           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
             <div *ngIf="f.email.errors.required">Email is required</div>
             <div *ngIf="f.email.errors.pattern">Enter a valid Email</div>
+          </div>
         </div>
-      </div>
         <div class="form-group">
           <label >Upload an Image</label>
             <input #imageInput
