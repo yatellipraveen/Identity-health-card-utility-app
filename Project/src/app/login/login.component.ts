@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -11,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  user : Observable <firebase.User>;
   loginForm: FormGroup;
   submitted=false;
   flag=false;
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
         (auth) =>{
           if(auth!=null){
             this.flag=false;
+            this.user=af.authState;
             var cityRef = firestore.collection('associate').doc(auth.uid);
             var getDoc = cityRef.ref.get()
               .then(doc => {
@@ -56,7 +60,7 @@ export class LoginComponent implements OnInit {
         this.af.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password).catch(error=>{
         if(error){
             this.errormsg=error.message;  
-            console.log(this.errormsg)
+            console.log("ksfjkfjf",this.errormsg)
             this.flag=true;
             }
         });

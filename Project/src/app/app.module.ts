@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsComponent } from './forms/forms.component';
-import {ShowidComponent} from './showid/showid.component';
+import { ShowidComponent} from './showid/showid.component';
 import { AddhealthcardComponent } from './addhealthcard/addhealthcard.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
@@ -27,6 +27,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './login/login.component';
 import { IssueComponent } from './issue/issue.component'; 
 import { HttpClientModule } from '@angular/common/http';
+import { SearchEmpComponent } from './search-emp/search-emp.component';
+import { FilterPipe }  from '../filter.pipe'
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     MenuComponent,
     LoginComponent,
     IssueComponent,
+    SearchEmpComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -75,4 +75,5 @@ export class ShowhcComponent implements OnInit {
   
   ngOnInit() {
   }
+
 }

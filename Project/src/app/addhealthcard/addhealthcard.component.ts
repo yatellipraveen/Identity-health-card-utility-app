@@ -39,6 +39,7 @@ export class AddhealthcardComponent implements OnInit {
 
     this.submitted = true;
     if (this.registerForm.invalid) {
+      console.log("asdhfs");
         return;
     }  
     else{    

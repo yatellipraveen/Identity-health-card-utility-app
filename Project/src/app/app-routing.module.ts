@@ -12,6 +12,7 @@ import {SignupComponent} from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import {SubmitComponent} from './submit/submit.component';
 import { IssueComponent } from './issue/issue.component'; 
+import { SearchEmpComponent } from './search-emp/search-emp.component';
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent},
  // {path: '**', redirectTo:''},
   {path: 'security/issue', component:IssueComponent},
+  {path:'searchEmp', component:SearchEmpComponent}
 ];
 
 @NgModule({
