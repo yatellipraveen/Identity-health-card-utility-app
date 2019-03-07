@@ -74,7 +74,7 @@ export class ShowhcComponent implements OnInit {
       });
       this.articlesCollection1 = this.firestore.collection('associate');
     this.articles1 = this.articlesCollection1.valueChanges();
-    this.articlesCollection1.doc(auth.email).ref.get().then((doc) => {
+    this.articlesCollection1.doc(auth.uid).ref.get().then((doc) => {
     this.article1 = doc.data();
     });
     

@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'admin/addhc', component: AddhealthcardComponent},
   {path: 'associate/showid', component: ShowidComponent},
   {path: 'login', component:LoginComponent},
+  {path: 'associate/addhc', component:AddhealthcardComponent},
  // {path: '**', redirectTo:''},
   {path: 'security/issue', component:IssueComponent},
 ];
