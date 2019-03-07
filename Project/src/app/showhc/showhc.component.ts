@@ -31,16 +31,9 @@ export interface Data1{
 export class ShowhcComponent implements OnInit {
   user : Observable <firebase.User>;
   
-  name:string;
-  dob:string;
-  eno:string;
-  gender:string;
-  policyno:string;
-  uhid:string;
+  
   age:number;
-  email:string;
-  validfrom:string;
-  validupto:string;
+  AssociateId;
   articlesCollection: AngularFirestoreCollection<Data>;
   articlesCollection1:AngularFirestoreCollection<Data1>;
   articles: Observable<Data[]>;

@@ -27,13 +27,16 @@ const routes: Routes = [
   {path : 'associate', component: AssociateComponent},
   {path: 'associate/showhc', component: ShowhcComponent},
   {path : 'security', component: SecurityComponent},
-  { path: 'admin/addhc', component: AddhealthcardComponent},
+  { path: 'admin/searchEmp', component: SearchEmpComponent},
+  {path: 'admin/searchEmp/addhc', component: AddhealthcardComponent},
   {path: 'associate/showid', component: ShowidComponent},
   {path: 'login', component:LoginComponent},
   {path: 'associate/addhc', component:AddhealthcardComponent},
  // {path: '**', redirectTo:''},
   {path: 'security/issue', component:IssueComponent},
-  {path:'searchEmp', component:SearchEmpComponent}
+  {path:'associate/searchEmp', component:SearchEmpComponent},
+  {path:'associate/searchEmp/addhc', component: AddhealthcardComponent},
+  {path: 'associate/addhc', component:AddhealthcardComponent}
 ];
 
 @NgModule({

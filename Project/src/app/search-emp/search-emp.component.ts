@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+import { GetIdService } from '../services/get-id.service';
 
 export interface Data {
 
@@ -24,7 +25,7 @@ export class SearchEmpComponent implements OnInit {
   data=[];
   articlesCollection: AngularFirestoreCollection<Data>;
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore, public services : GetIdService) {
     this.articlesCollection = this.firestore.collection('associate');
     this.articlesCollection.get().forEach( doc=>{
       doc.docs.forEach( dat=>{
@@ -35,9 +36,8 @@ export class SearchEmpComponent implements OnInit {
 
   ngOnInit() {
   }
-  createHc(idx){
-
-    console.log(idx);
+  createHc(value){
+    this.services.setId(value);
   }
 
 

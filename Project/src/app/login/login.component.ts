@@ -60,7 +60,6 @@ export class LoginComponent implements OnInit {
         this.af.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password).catch(error=>{
         if(error){
             this.errormsg=error.message;  
-            console.log("ksfjkfjf",this.errormsg)
             this.flag=true;
             }
         });
