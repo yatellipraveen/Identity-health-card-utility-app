@@ -103,7 +103,7 @@ export class AddhealthcardComponent implements OnInit {
     uhid: '',
     gender: '',
     //email:'',
-    eno: '',
+    //eno: '',
     dob: '',
     //cardno: '',
     validfrom:'',

@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
+import { map } from 'rxjs/operators';
 
 export interface Data {
 
@@ -67,13 +68,23 @@ export class ShowhcComponent implements OnInit {
       }).catch(error=>{
         console.log(""+error);
       });
-      this.articlesCollection1 = this.firestore.collection('associate');
-    this.articles1 = this.articlesCollection1.valueChanges();
+      
     this.articlesCollection1.doc(auth.uid).ref.get().then((doc) => {
     this.article1 = doc.data();
     });
-    
-    }
+//     this.firestore.collection('employeehc/' +'1234'+ '/healthcards').ref.get().then((subCollectionSnapshot) => {
+//     subCollectionSnapshot.forEach((subDoc) => {
+//         console.log(subDoc.data());
+//     });
+// });
+this.articlesCollection = firestore.collection<Data>('employeehc/' +auth.uid+ '/healthcards');
+  this.articles = this.articlesCollection.auditTrail().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Data;
+        return data ;
+      }))
+    );
+  }
   });
 
   }
