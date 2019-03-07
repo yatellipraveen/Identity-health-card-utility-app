@@ -51,10 +51,9 @@ export class ShowhcComponent implements OnInit {
     this.articlesCollection1 = this.firestore.collection('associate');
     this.articles = this.articlesCollection.valueChanges();
     this.articles1 = this.articlesCollection1.valueChanges();
+    this.AssociateId=auth.uid;
     this.articlesCollection.doc(auth.uid).ref.get().then((doc) => {
     this.article = doc.data();
-    console.log(this.article)
-    //var dob = '1980/08/10';
     var fields= this.article.dob.split('/');
       var year = Number(fields[2]);
       var month = Number(fields[1]);

@@ -99,15 +99,12 @@ export class AddhealthcardComponent implements OnInit {
   }
     resetForm(){
       this.registerForm.setValue({
-    policyno : '',
-    uhid: '',
-    gender: '',
-    //email:'',
-    eno: '',
-    dob: '',
-    //cardno: '',
-    validfrom:'',
-    validupto:''
+      policyno : '',
+      uhid: '',
+      gender: '',
+      dob: '',
+      validfrom:'',
+      validupto:''
 
     });
   }
