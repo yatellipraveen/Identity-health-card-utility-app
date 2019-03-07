@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { pipeFromArray } from 'rxjs/internal/util/pipe';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { GetIdService } from '../services/get-id.service';
 
 
 @Component({
@@ -11,6 +14,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./addhealthcard.component.css']
 })
 export class AddhealthcardComponent implements OnInit {
+
+  AssociateId;
   submitted = false;
   flag= false;
   success=false;
@@ -18,7 +23,6 @@ export class AddhealthcardComponent implements OnInit {
     policyno :new FormControl ('', Validators.required),
     uhid: new FormControl ('', Validators.required),
     gender: new FormControl ('', Validators.required),
-    eno: new FormControl ('', Validators.required),
     dob: new FormControl ('', Validators.required),
     validfrom: new FormControl ('', Validators.required),
     validupto: new FormControl ('', Validators.required)
@@ -26,7 +30,28 @@ export class AddhealthcardComponent implements OnInit {
    get f(){
     return this.registerForm.controls;
   }
-  constructor(private router: Router, private location: Location, private firestore: AngularFirestore) { }
+  constructor(private router: Router, private location: Location, private firestore: AngularFirestore, public af : AngularFireAuth, private service: GetIdService) { 
+    this.af.authState.subscribe(
+      (auth) =>{
+        if(auth!=null){
+          this.flag=false;
+          var dbRef = firestore.collection('associate').doc(auth.uid);
+          dbRef.ref.get()
+            .then(doc => {
+              if (!doc.exists) {
+                console.log('No such document!');
+              } else {
+                 if(doc.data().role=='Associate') this.AssociateId=auth.uid;
+                 else  this.AssociateId=service.getId();
+              }
+            })
+            .catch(err => {
+              console.log('Error getting document', err);
+            });
+        }
+      }
+    );
+  }
 
   ngOnInit() {
 
@@ -39,13 +64,12 @@ export class AddhealthcardComponent implements OnInit {
 
     this.submitted = true;
     if (this.registerForm.invalid) {
-      console.log("asdhfs");
         return;
     }  
     else{    
       this.flag=true;
       let data= this.registerForm.value;
-      this.firestore.collection('employeehc').doc(this.registerForm.value.eno).set(data);
+      this.firestore.collection('employeehc').doc(this.AssociateId).set(data);
       this.resetForm();
       this.submitted=false;
       this.flag=false;

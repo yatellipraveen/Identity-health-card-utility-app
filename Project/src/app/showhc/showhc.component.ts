@@ -26,16 +26,9 @@ export interface Data {
 export class ShowhcComponent implements OnInit {
   user : Observable <firebase.User>;
   
-  name:string;
-  dob:string;
-  eno:string;
-  gender:string;
-  policyno:string;
-  uhid:string;
+  
   age:number;
-  email:string;
-  validfrom:string;
-  validupto:string;
+  AssociateId;
   articlesCollection: AngularFirestoreCollection<Data>;
   articlesCollection1:AngularFirestoreCollection<Data>;
   articles: Observable<Data[]>;
@@ -49,6 +42,7 @@ export class ShowhcComponent implements OnInit {
       (auth) =>{
         if(auth!=null){
           this.user=this.af.authState;
+          this.AssociateId=auth.uid;
           this.articlesCollection = this.firestore.collection('employeehc');
           this.articlesCollection1 = this.firestore.collection('associate');
           this.articles = this.articlesCollection.valueChanges();
