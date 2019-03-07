@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from "angularfire2/database";
 import * as  firebase   from  'firebase';
 import { async } from 'q';
 import { ToastrService} from 'ngx-toastr';
@@ -19,6 +18,7 @@ import { HttpClient} from '@angular/common/http';
 export class FormsComponent implements OnInit {
   submitted=false;
   flag= false;
+  success=false;
   image:File;
   file:File;
   upload=false;
@@ -45,7 +45,6 @@ export class FormsComponent implements OnInit {
       public af1 :AngularFireAuth,
       private toastr : ToastrService,
       private router: Router,
-       private db: AngularFireDatabase,
        private http: HttpClient ) { 
        }
     ngOnInit() {
@@ -57,55 +56,38 @@ export class FormsComponent implements OnInit {
       this.submitted=true;
       if(this.form.invalid){
         return;
- 
       }
-      
-  
-    //   console.log(this.form.value)
-    //   let data= this.form.value;
-    //   this.firestore.collection('employeeid').add(data);
-      
-    //   //data = this.form.value;
-    //  // this.firestore.collection('associate').add(data);
-    //   this.resetForm();
-    //   this.submitted=false;
-    //   this.flag=true;
-
-    //   let data = this.form.value;
-    //   this.firestore.collection('associate').doc(this.form.value.email).set(data);
-
-    //  // firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').then(function(firebaseUser) {
-    //   firebase.auth().createUserWithEmailAndPassword(this.form.value.email, '123456').catch(function(error) {
-         
-
-    //   } 
-      const metaData= {'contentType': this.file.type};
-      var string1 = '/photos/';
-      var string2 = this.file.name;
-      var path = string1 + string2;
-       // console.log("jdgkjjfkjfd",path);
-      var storageRef :  firebase.storage.Reference=  firebase.storage().ref(path);
-      await storageRef.put(this.file,metaData);
-      await storageRef.getDownloadURL().then(downloadURL => {
-         const imageUrl = downloadURL;
-        console.log('URL:' + imageUrl); 
-        this.form.patchValue({ 
-          imagesrc: imageUrl
+      else{
+        this.flag=await true;
+        const metaData= {'contentType': this.file.type};
+        var string1 = '/photos/';
+        var string2 = this.file.name;
+        var path = string1 + string2;
+        var storageRef :  firebase.storage.Reference=  firebase.storage().ref(path);
+        await storageRef.put(this.file,metaData);
+        await storageRef.getDownloadURL().then(downloadURL => {
+          const imageUrl = downloadURL;
+          console.log('URL:' + imageUrl); 
+          this.form.patchValue({ 
+            imagesrc: imageUrl
+          });
         });
-      });
-      let data =await this.form.value;
-      console.log("Uploading file ......",this.file.name);
-      this.firestore.collection('associate').doc(this.form.value.eid).set(data);
-      var obj={
-        "uid":this.form.value.eid,
-        "email": this.form.value.email
+        let data =await this.form.value;
+        console.log("Uploading file ......",this.file.name);
+        
+        this.firestore.collection('associate').doc(this.form.value.eid).set(data);
+        var obj={
+          "uid":this.form.value.eid,
+          "email": this.form.value.email
+        }
+        this.http.post(this.url,JSON.stringify(obj)).subscribe(res =>{
+        });
+        this.resetForm();
+        this.submitted=false;
+        this.flag=false;
+        this.success=true;
       }
-      this.http.post(this.url,JSON.stringify(obj)).subscribe(res =>{
-      });
-      this.resetForm();
-      this.submitted=false;
-      this.flag=true;
-      }
+    }
   
     resetForm(){
       this.form.setValue({
@@ -122,19 +104,4 @@ export class FormsComponent implements OnInit {
     processFile(event :any ){
        this.file =  event.target.files[0]; 
     }
-
-    // name="praveen";
-    // data={
-    //   "name":this.name,
-    //   "eid":"3214",
-    // };
-    
-
-    // params=new HttpParams().set('name','praveen');
-   
-    // httpcall(){
-    //   console.log("Http Request called");
-    //   this.http.post(this.url,JSON.stringify(this.data)).subscribe(res =>{
-    //   });
-    // }
 }

@@ -39,6 +39,8 @@ export class ShowhcComponent implements OnInit {
   uhid:string;
   age:number;
   email:string;
+  validfrom:string;
+  validupto:string;
   articlesCollection: AngularFirestoreCollection<Data>;
   articlesCollection1:AngularFirestoreCollection<Data1>;
   articles: Observable<Data[]>;
@@ -81,31 +83,9 @@ export class ShowhcComponent implements OnInit {
     }
   });
 
+  }
   
-
-      
-        
-        
-      //   this.articlesCollection = this.firestore.collection('employeehc');
-      //   this.articles = this.articlesCollection.valueChanges();
-      //   this.articlesCollection.doc(auth.email).ref.get().then((doc) => {
-      //   this.article = doc.data(); 
-      //   var fields= this.article.dob.split('/');
-      //   var year = Number(fields[2]);
-      //   var month = Number(fields[1]);
-      //   var day = Number(fields[0]);
-      //   var today = new Date();
-      //   this.age = today.getFullYear() - year;
-      //   if (today.getMonth() < month || (today.getMonth() == month && today.getDate() < day)) {
-      //   this.age--; 
-      //   }
-      //   });
-      // }
-    //});
+  ngOnInit() {
   }
 
-   
-
-  ngOnInit() {
-}
 }

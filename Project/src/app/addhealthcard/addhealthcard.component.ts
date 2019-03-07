@@ -13,15 +13,18 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class AddhealthcardComponent implements OnInit {
   submitted = false;
   flag= false;
+  success=false;
   registerForm = new FormGroup({
 
     policyno :new FormControl ('', Validators.required),
     uhid: new FormControl ('', Validators.required),
     gender: new FormControl ('', Validators.required),
-    //email: new FormControl('',Validators.required),
     eno: new FormControl ('', Validators.required),
     dob: new FormControl ('', Validators.required),
+
     //cardno: new FormControl ('', Validators.required),
+    validfrom: new FormControl ('', Validators.required),
+    validupto: new FormControl ('', Validators.required)
    });
    get f(){
     return this.registerForm.controls;
@@ -29,51 +32,31 @@ export class AddhealthcardComponent implements OnInit {
   constructor(private router: Router, private location: Location, private firestore: AngularFirestore) { }
 
   ngOnInit() {
-      // this.registerForm = this.formBuilder.group({
-      //     firstName: new FormControl ('', Validators.required),
-      //     lastName: new FormControl ('', Validators.required),
-      //     policyno : new FormControl ('', Validators.required),
-      //     uhid:new FormControl ('', Validators.required),
-      //     gender:new FormControl ('', Validators.required),
-      //     eno: new FormControl ('', Validators.required),
-      //     age:new FormControl ('', Validators.required),
-      //     cardno: new FormControl ('', Validators.required),
-      //     validfrom: ['',Validators.required],
-      //     validupto: ['',Validators.required]
-      // });
+
   }
   onClick(){
     this.location.back();
   }
-  // convenience getter for easy access to form fields
   
   onSubmit() {
-      this.submitted = true;
 
-      // stop here if form is invalid
-      if (this.registerForm.invalid) {
-          return;
-      }      
-
-      console.log("sjfhjdgfkd");
-      console.log(this.registerForm.value);
-      //let data= this.registerForm.value;
-      //this.firestore.collection('employeehc').add(data);
-      
-      //console.log(this.registerForm.value)
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      console.log("asdhfs");
+        return;
+    }  
+    else{    
+      this.flag=true;
       let data= this.registerForm.value;
       this.firestore.collection('employeehc').doc(this.registerForm.value.eno).set(data);
-        this.resetForm();
-        this.submitted=false;
-        this.flag=true;
-     //this.toastr.success('Successfully submitted', 'EMP REGISTER');
-      //this.router.navigate(['welcome']);
-      // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
+      this.resetForm();
+      this.submitted=false;
+      this.flag=false;
+      this.success=true;
+    }    
   }
     resetForm(){
       this.registerForm.setValue({
-      //firstName: '',
-      //lastName:'',
     policyno : '',
     uhid: '',
     gender: '',
@@ -81,9 +64,8 @@ export class AddhealthcardComponent implements OnInit {
     eno: '',
     dob: '',
     //cardno: '',
-
-    //validfrom:'',
-    //validupto:''
+    validfrom:'',
+    validupto:''
 
     });
   }

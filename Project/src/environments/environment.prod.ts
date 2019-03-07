@@ -8,6 +8,7 @@ export const environment = {
     projectId: "attendance-19db4",
     storageBucket: "attendance-19db4.appspot.com",
     messagingSenderId: "42218411122"
+
     // apiKey: "AIzaSyATvwgaT6jgpJ-hqi_Ex1wLSg2uvC8NSXw",
     // authDomain: "firestorecrud-21741.firebaseapp.com",
     // databaseURL: "https://firestorecrud-21741.firebaseio.com",
@@ -21,7 +22,6 @@ export const environment = {
     // projectId: "attendence-40212",
     // storageBucket: "attendence-40212.appspot.com",
     // messagingSenderId: "1082050218050"
- 
 
     // apiKey: "AIzaSyCie-9AiWHDcFazavhyG7JKLx267Q2za8A",
     // authDomain: "attendance-93e1b.firebaseapp.com",
@@ -29,7 +29,5 @@ export const environment = {
     // projectId: "attendance-93e1b",
     // storageBucket: "attendance-93e1b.appspot.com",
     // messagingSenderId: "450807973782"
-
-
   }
 };

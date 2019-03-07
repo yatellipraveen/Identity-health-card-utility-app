@@ -6,14 +6,14 @@
     <img src="https://www.qimpro.com/images-convention/1/53-d1d3cd97-NibhayeVaade.jpg" style="height:20%; width:100%; margin-top:1%; margin-left:1%;">
     <div class="container">
     <div class="text-center" style="margin-top:20px" >
-        <h5> SENECA GLOBAL IT SERVICES PRIVATE LIMITED</h5>
+        <h5> SENECA GLOBAL IT SERVICES PVT. LTD. </h5>
         </div>
     <div class="row" style="margin-top:5%">
       <div class="col-12">
           <div class="row">
               <label class="left">NAME</label>
               <span style="margin-left:18%">: {{article1?.firstName+" "+article1?.lastName}}</span>
-            </div>
+          </div>
           <div class="row">
             <label class="left">Policy No</label>
             <span style="margin-left:10.5%">: {{article?.policyno}}</span>
@@ -29,23 +29,17 @@
           <div class="row">
               <label class="left">Gender</label>
               <span style="margin-left:15%">: {{article?.gender}}</span>
-            </div>
-            <div class="row">
-                <label class="left">Age</label>
-                <span style="margin-left:23%">: {{age}}</span>
-              </div>
-      </div>
-      <!-- <div class="row" style="margin-top:5%; padding-left:2.5%">
-          <div class="col-12" style="background-color:orange">
-            <span class="text-center">
-           <b style="font-size: small; margin-left:3%"> SENECAGLOBAL IT SERVICES PVT.LTD<br></b>
-           <span style="font-size:x-small; margin-left:4%">7TH FLOOR, WESTERN PEARL, SURVEY NUMBER13<br></span>
-           <span style="font-size:x-small; margin-left:2%">KONDAPUR, HYDERABAD 500084, TELANGANA, INDIA<br></span>
-           <span style="font-size:x-small; margin-left:15%">O +91.40.66073500 F +91.40.66073535<br></span>
-           <span style="font-size:x-small; margin-left:25%">WWW.SENECAGLOBAL.COM<br></span>
-          </span>
           </div>
-        </div> -->
+          <div class="row">
+            <label class="left">Age</label>
+            <span style="margin-left:23%">: {{age}}</span>
+          </div>
+          <div class="row">
+            <label class="left">Validity</label>
+            <span style="margin-left:7%">: {{article?.validfrom+"-"+article?.validupto}}</span>
+          </div>   
+     </div>
+       
     </div>
     </div>
-
+  </div>
