@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { pipeFromArray } from 'rxjs/internal/util/pipe';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { GetIdService } from '../services/get-id.service';
 
@@ -32,7 +31,8 @@ export class AddhealthcardComponent implements OnInit {
   success=false;
   
   registerForm = new FormGroup({
-
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
     policyno :new FormControl ('', Validators.required),
     uhid: new FormControl ('', Validators.required),
     gender: new FormControl ('', Validators.required),
@@ -104,7 +104,9 @@ export class AddhealthcardComponent implements OnInit {
       gender: '',
       dob: '',
       validfrom:'',
-      validupto:''
+      validupto:'',
+      firstName:'',
+      lastName:'',
 
     });
   }

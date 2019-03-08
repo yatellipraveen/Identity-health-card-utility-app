@@ -15,6 +15,22 @@
 
                 </div>
                 <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control"  pattern="^[A-Za-z]+$" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                      <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                      <div *ngIf="f.firstName.errors.pattern">First Name should contain only alphabets</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" pattern="^[A-Za-z]+$" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" >
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                      <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                      <div *ngIf="f.lastName.errors.pattern">Last Name should contain only alphabets</div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Policy Number</label>
                     <input type="text" formControlName="policyno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.policyno.errors }" />
                     <div *ngIf="submitted && f.policyno.errors" class="invalid-feedback">
