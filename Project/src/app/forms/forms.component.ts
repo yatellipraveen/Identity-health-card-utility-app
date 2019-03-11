@@ -72,16 +72,17 @@ export class FormsComponent implements OnInit {
             imagesrc: imageUrl
           });
         });
-        let data =await this.form.value;
-        console.log("Uploading file ......",this.file.name);
-        
-        this.firestore.collection('associate').doc(this.form.value.eid).set(data);
         var obj={
           "uid":this.form.value.eid,
           "email": this.form.value.email
         }
         this.http.post(this.url,JSON.stringify(obj)).subscribe(res =>{
         });
+        let data =await this.form.value;
+        console.log("Uploading file ......",this.file.name);
+        
+        this.firestore.collection('associate').doc(this.form.value.eid).set(data);
+        
         this.resetForm();
         this.submitted=false;
         this.flag=false;

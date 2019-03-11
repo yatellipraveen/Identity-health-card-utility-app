@@ -22,6 +22,7 @@ export interface Data {
 })
 export class SearchEmpComponent implements OnInit {
 
+  searchText:string;
   data=[];
   articlesCollection: AngularFirestoreCollection<Data>;
 
