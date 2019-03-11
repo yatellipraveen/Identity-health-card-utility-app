@@ -16,6 +16,8 @@ export interface Data {
   gender:string,
   policyno:string,
   uhid:string,
+  validfrom:string,
+  validupto:string;
   //age:number
 }
 export interface Data1{
