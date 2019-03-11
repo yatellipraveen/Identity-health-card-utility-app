@@ -1,7 +1,9 @@
 <div id="myMenu" class="menu">
   <a class="closebtn fa fa-close" (click)="closeMenu()" style="color:black" ></a>
-  <a  >About</a>
-  <a  >Help</a>
+  <a  (click)="displayAdmin()">About</a>
+  <div class="text" *ngIf="showAdmin">SG-Mobile v1.0</div>
+  <a  (click)="displayShowHelp()">Help</a>
+  <div class="text" *ngIf="showHelp">Contact Admin@senecaglobal.com</div>
   <a class="fa fa-sign-out logout" routerLink="" (click)="logout()" > logout</a>
 </div>
 

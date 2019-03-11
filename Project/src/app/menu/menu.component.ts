@@ -7,6 +7,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  showHelp=false;
+  showAdmin=false;
 
   constructor(public af: AngularFireAuth) { }
 
@@ -21,5 +23,13 @@ export class MenuComponent implements OnInit {
   logout(){
     this.af.auth.signOut();
     
+  }
+  displayShowHelp(){
+    if(this.showHelp==false) this.showHelp=true;
+    else this.showHelp=false;
+  }
+  displayAdmin(){
+    if(this.showAdmin==false) this.showAdmin=true;
+    else this.showAdmin=false;
   }
 }

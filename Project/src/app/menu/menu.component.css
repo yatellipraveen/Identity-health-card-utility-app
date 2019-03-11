@@ -27,7 +27,7 @@
     padding-top: 60px;
   }
   
-  .menu a {
+  .menu a , .text{
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
@@ -35,6 +35,15 @@
     display: block;
     transition: 0.3s;
   }
+
+  .text{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+  }
+
 
   .logout{
     position: absolute;
