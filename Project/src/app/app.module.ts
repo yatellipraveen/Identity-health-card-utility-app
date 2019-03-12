@@ -15,7 +15,6 @@ import { ShowhcComponent } from './showhc/showhc.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule} from '@angular/fire/auth'
-import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -28,7 +27,9 @@ import { LoginComponent } from './login/login.component';
 import { IssueComponent } from './issue/issue.component'; 
 import { HttpClientModule } from '@angular/common/http';
 import { SearchEmpComponent } from './search-emp/search-emp.component';
-import { FilterPipe }  from '../filter.pipe'
+import { FilterPipe }  from '../filter.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { FilterPipe }  from '../filter.pipe'
     }),
     AngularFireAuthModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
