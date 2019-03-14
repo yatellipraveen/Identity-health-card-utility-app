@@ -6,24 +6,14 @@ import * as firebase from 'firebase';
 import { map } from 'rxjs/operators';
 
 export interface Data {
-
   firstName:string,
   lastName:string,
-  cardno:string,
   dob:string,
-  eno:string,
-  email:string,
   gender:string,
   policyno:string,
   uhid:string,
   validfrom:string,
   validupto:string;
-  //age:number
-}
-export interface Data1{
-  firstName:string;
-  lastName:string;
-  eid:string;
 }
 
 @Component({
@@ -37,22 +27,23 @@ export class ShowhcComponent implements OnInit {
   
   age:number;
   ageList=[];
-  AssociateId;
-  articlesCollection: AngularFirestoreCollection<Data>;
-  articlesCollection1:AngularFirestoreCollection<Data1>;
-  articles: Observable<Data[]>;
-  articles1: Observable<Data1[]>;
-  article: any;
-  article1: any;
-
-  constructor(private firestore: AngularFirestore, public af : AngularFireAuth) {
-
-    this.af.authState.subscribe(
+  associateId;
+  healthcardCollection: AngularFirestoreCollection<Data>;
+  healthcard: Observable<Data[]>;
+  
+  constructor(private firestore: AngularFirestore, public fireauth : AngularFireAuth) {
+  }
+  
+  ngOnInit() {
+    this.authenticate();
+  }
+  authenticate(){
+    this.fireauth.authState.subscribe(
       (auth) =>{
       if(auth!=null){
-         this.AssociateId=auth.uid;
-         this.articlesCollection = firestore.collection<Data>('employeehc/' +auth.uid+ '/healthcards');
-         this.articles = this.articlesCollection.auditTrail().pipe(
+         this.associateId=auth.uid;
+         this.healthcardCollection = this.firestore.collection<Data>('employeehc/' +auth.uid+ '/healthcards');
+         this.healthcard = this.healthcardCollection.auditTrail().pipe(
          map(actions => actions.map(a => {
           const data = a.payload.doc.data() as Data;
           var fields=data.dob.split('/');
@@ -71,9 +62,6 @@ export class ShowhcComponent implements OnInit {
   }
   });
 
-  }
-  
-  ngOnInit() {
   }
 
 }

@@ -16,7 +16,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule} from '@angular/fire/auth'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SignupComponent } from './signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SubmitComponent } from './submit/submit.component';
 import { MenuComponent } from './menu/menu.component';
@@ -43,7 +42,6 @@ import { environment } from '../environments/environment'
     AssociateComponent,
     SecurityComponent,
     ShowhcComponent,
-    SignupComponent,
     SubmitComponent,
     MenuComponent,
     LoginComponent,

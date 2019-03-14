@@ -19,14 +19,14 @@ export class LoginComponent implements OnInit {
   flag=false;
   noUser=false;
   errormsg="";
-  constructor(private formBuilder: FormBuilder, public firestore : AngularFirestore, public af: AngularFireAuth,private router: Router) {
-      this.af.authState.subscribe(
+  constructor(private formBuilder: FormBuilder, public firestore : AngularFirestore, public fireauth: AngularFireAuth,private router: Router) {
+      this.fireauth.authState.subscribe(
         (auth) =>{
           if(auth!=null){
             this.flag=false;
-            this.user=af.authState;
-            var cityRef = firestore.collection('associate').doc(auth.uid);
-            var getDoc = cityRef.ref.get()
+            this.user=fireauth.authState;
+            var dbRef = firestore.collection('associate').doc(auth.uid);
+            var getDoc = dbRef.ref.get()
               .then(doc => {
                 if (!doc.exists) {
                   console.log('No such document!');
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
         return;
     }
-        this.af.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password).catch(error=>{
+        this.fireauth.auth.signInWithEmailAndPassword(this.loginForm.value.username,this.loginForm.value.password).catch(error=>{
         if(error){
             this.errormsg=error.message;  
             this.flag=true;

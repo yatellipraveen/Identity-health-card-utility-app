@@ -8,7 +8,6 @@ import { AssociateComponent } from './associate/associate.component';
 import { SecurityComponent } from './security/security.component';
 import { ShowhcComponent } from './showhc/showhc.component';
 import {ShowidComponent} from './showid/showid.component';
-import {SignupComponent} from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import {SubmitComponent} from './submit/submit.component';
 import { IssueComponent } from './issue/issue.component'; 
@@ -18,7 +17,6 @@ import { SearchEmpComponent } from './search-emp/search-emp.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
-  {path: 'signup', component:SignupComponent},
   {path:'home', component:HomeComponent},
   {path :'admin', component: AdminComponent},
   {path:'admin/forms',component: FormsComponent},

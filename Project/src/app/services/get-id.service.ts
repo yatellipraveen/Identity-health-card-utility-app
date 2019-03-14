@@ -4,13 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GetIdService {
-
+  associateId;
   constructor() { }
-  AssociateId;
+  
   setId(uid){
-    this.AssociateId=uid;
+    this.associateId=uid;
   }
   getId(){
-    return this.AssociateId;
+    return this.associateId;
   }
 }

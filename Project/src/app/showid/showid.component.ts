@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
@@ -26,20 +24,20 @@ export class ShowidComponent implements OnInit {
   name:string;
   bgroup:string;
   id:string;
-  articlesCollection: AngularFirestoreCollection<Data>;
-  articles: Observable<Data[]>;
-  article: any; 
+  associateCollection: AngularFirestoreCollection<Data>;
+  associates: Observable<Data[]>;
+  associate: any; 
 
 
-  constructor(private firestore: AngularFirestore, public af : AngularFireAuth) {
-    this.af.authState.subscribe(
+  constructor(private firestore: AngularFirestore, public fireauth : AngularFireAuth) {
+    this.fireauth.authState.subscribe(
       (auth) =>{
       if(auth!=null){
-        this.user=this.af.authState;
-        this.articlesCollection = this.firestore.collection('associate');
-        this.articles = this.articlesCollection.valueChanges();
-        this.articlesCollection.doc(auth.uid).ref.get().then((doc) => {
-        this.article = doc.data();
+        this.user=this.fireauth.authState;
+        this.associateCollection = this.firestore.collection('associate');
+        this.associates = this.associateCollection.valueChanges();
+        this.associateCollection.doc(auth.uid).ref.get().then((doc) => {
+        this.associate = doc.data();
       });
     }
   });
@@ -47,8 +45,5 @@ export class ShowidComponent implements OnInit {
 
   ngOnInit() {
   }
-
-
-       
 
 }

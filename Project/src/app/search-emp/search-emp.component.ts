@@ -24,11 +24,11 @@ export class SearchEmpComponent implements OnInit {
 
   searchText:string;
   data=[];
-  articlesCollection: AngularFirestoreCollection<Data>;
+  associateCollection: AngularFirestoreCollection<Data>;
 
   constructor(private firestore: AngularFirestore, public services : GetIdService) {
-    this.articlesCollection = this.firestore.collection('associate');
-    this.articlesCollection.get().forEach( doc=>{
+    this.associateCollection = this.firestore.collection('associate');
+    this.associateCollection.get().forEach( doc=>{
       doc.docs.forEach( dat=>{
         this.data.push(dat.id);
       });

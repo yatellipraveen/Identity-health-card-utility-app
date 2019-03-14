@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from "angularfire2/database";
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
@@ -29,7 +28,7 @@ export class IssueComponent implements OnInit {
   get f(){
     return this.form.controls;
   }   
-  constructor(private firestore: AngularFirestore, public af : AngularFireAuth, private router: Router,) {
+  constructor(private firestore: AngularFirestore, public fireauth : AngularFireAuth, private router: Router,) {
 }
 
   ngOnInit() {
@@ -39,11 +38,11 @@ export class IssueComponent implements OnInit {
     if(this.form.invalid){
       return;
     }
-    await this.af.authState.subscribe(
+    await this.fireauth.authState.subscribe(
       async (auth) =>{
       if(auth!=null){
-        var cityRef = this.firestore.collection('associate').doc(this.form.value.eno);
-        var getDoc = cityRef.ref.get()
+        var dbRef = this.firestore.collection('associate').doc(this.form.value.eno);
+        var getDoc = dbRef.ref.get()
         .then(doc => {
           if (!doc.exists) {
             this.doc=true;
@@ -54,7 +53,7 @@ export class IssueComponent implements OnInit {
         var tid={
           "temporaryid": this.form.value.tno
         };
-        this.user = await  this.af.authState;
+        this.user = await  this.fireauth.authState;
         await this.firestore.collection('associate').doc(this.form.value.eno).update(tid).then(function(){
           console.log("updated succesfully");
         });

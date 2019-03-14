@@ -35,24 +35,23 @@ export class FormsComponent implements OnInit {
     imagesrc:new FormControl('')
    });
    
-   get f(){
+   get validate(){
      return this.form.controls;
    }   
 
     constructor(private location: Location, 
       private firestore: AngularFirestore,
       public af : AngularFireAuth,
-      public af1 :AngularFireAuth,
       private toastr : ToastrService,
       private router: Router,
        private http: HttpClient ) { 
        }
     ngOnInit() {
     }
-    onClick(){
+    goBack(){
       this.location.back();
     }
-    async onSubmit(){
+    async addFormData(){
       this.submitted=true;
       if(this.form.invalid){
         return;
@@ -60,14 +59,13 @@ export class FormsComponent implements OnInit {
       else{
         this.flag=await true;
         const metaData= {'contentType': this.file.type};
-        var string1 = '/photos/';
-        var string2 = this.file.name;
-        var path = string1 + string2;
+        var photos = '/photos/';
+        var filename = this.file.name;
+        var path = photos + filename;
         var storageRef :  firebase.storage.Reference=  firebase.storage().ref(path);
         await storageRef.put(this.file,metaData);
         await storageRef.getDownloadURL().then(downloadURL => {
           const imageUrl = downloadURL;
-          console.log('URL:' + imageUrl); 
           this.form.patchValue({ 
             imagesrc: imageUrl
           });
@@ -79,8 +77,7 @@ export class FormsComponent implements OnInit {
         this.http.post(this.url,JSON.stringify(obj)).subscribe(res =>{
         });
         let data =await this.form.value;
-        console.log("Uploading file ......",this.file.name);
-        
+                
         this.firestore.collection('associate').doc(this.form.value.eid).set(data);
         
         this.resetForm();
