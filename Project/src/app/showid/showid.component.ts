@@ -3,14 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
+import { Associateid } from '../models/associateid.model';
 
-export interface Data {
-  firstName: string,
-  lastName: string,
-  bgroup: string
-  eid:string;
-  imagesrc:string;
-}
 @Component({
   selector: 'app-showid',
   templateUrl: './showid.component.html',
@@ -21,11 +15,8 @@ export class ShowidComponent implements OnInit {
 
   user : Observable <firebase.User>;
   
-  name:string;
-  bgroup:string;
-  id:string;
-  associateCollection: AngularFirestoreCollection<Data>;
-  associates: Observable<Data[]>;
+  associateCollection: AngularFirestoreCollection<Associateid>;
+  associates: Observable<Associateid[]>;
   associate: any; 
 
 

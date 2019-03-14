@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         password: ['', Validators.required]
     });
   }
-  get f() { return this.loginForm.controls; }
+  get validate() { return this.loginForm.controls; }
 
   async Login() {
     this.submitted = true;

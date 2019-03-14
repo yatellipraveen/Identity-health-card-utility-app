@@ -4,17 +4,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { map } from 'rxjs/operators';
+import {Healthcard} from '../models/healthcard.model';
 
-export interface Data {
-  firstName:string,
-  lastName:string,
-  dob:string,
-  gender:string,
-  policyno:string,
-  uhid:string,
-  validfrom:string,
-  validupto:string;
-}
 
 @Component({
   selector: 'app-showhc',
@@ -24,12 +15,11 @@ export interface Data {
 export class ShowhcComponent implements OnInit {
   user : Observable <firebase.User>;
   
-  
   age:number;
   ageList=[];
   associateId;
-  healthcardCollection: AngularFirestoreCollection<Data>;
-  healthcard: Observable<Data[]>;
+  healthcardCollection: AngularFirestoreCollection<Healthcard>;
+  healthcard: Observable<Healthcard[]>;
   
   constructor(private firestore: AngularFirestore, public fireauth : AngularFireAuth) {
   }
@@ -42,10 +32,10 @@ export class ShowhcComponent implements OnInit {
       (auth) =>{
       if(auth!=null){
          this.associateId=auth.uid;
-         this.healthcardCollection = this.firestore.collection<Data>('employeehc/' +auth.uid+ '/healthcards');
+         this.healthcardCollection = this.firestore.collection<Healthcard>('employeehc/' +auth.uid+ '/healthcards');
          this.healthcard = this.healthcardCollection.auditTrail().pipe(
          map(actions => actions.map(a => {
-          const data = a.payload.doc.data() as Data;
+          const data = a.payload.doc.data() as Healthcard;
           var fields=data.dob.split('/');
           var year = Number(fields[2]);
           var month = Number(fields[1]);

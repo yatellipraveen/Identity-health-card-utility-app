@@ -1,19 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
 import { GetIdService } from '../services/get-id.service';
+import { Healthcard } from '../models/healthcard.model' ;
 
-export interface Data {
-
-  firstName:string,
-  lastName:string,
-  cardno:string,
-  dob:string,
-  eno:string,
-  gender:string,
-  policyno:string,
-  uhid:string,
-
-}
 
 @Component({
   selector: 'app-search-emp',
@@ -24,7 +13,7 @@ export class SearchEmpComponent implements OnInit {
 
   searchText:string;
   data=[];
-  associateCollection: AngularFirestoreCollection<Data>;
+  associateCollection: AngularFirestoreCollection<Healthcard>;
 
   constructor(private firestore: AngularFirestore, public services : GetIdService) {
     this.associateCollection = this.firestore.collection('associate');
